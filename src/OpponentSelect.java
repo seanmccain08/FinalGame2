@@ -74,7 +74,8 @@ public class OpponentSelect extends JPanel {
         g.drawString("Choose your opponent", 350, 50);
         g.setFont(mainFont);
         g.drawString("Damage Bonus: "+Main.player.getDamageBonus(), 200, 660);
-        g.drawString("Games: "+Main.games, 700, 660);
+        g.drawString("Games: "+Main.games, 900, 660);
+        g.drawString("Shields: "+Main.player.getShields(), 600, 660);
         g.setFont(textBoxFont);
 
 //      Creating Images

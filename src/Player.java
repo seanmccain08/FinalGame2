@@ -78,6 +78,11 @@ public class Player {
         return damageBonus;
 
     }
+    public void setDamageBonus(int x){
+
+        damageBonus = x;
+
+    }
     public void setShields(int s){
 
         shields = s;
@@ -92,23 +97,39 @@ public class Player {
     public void useBandage(Item item, int index){
 
         int e = item.getModifier();
-        int x = Main.player.getHP();
+        int x = getHP();
         if(x == 100){
 
+            Sound.expandSound();
             JOptionPane.showMessageDialog(null, "You already have max health!");
+            Sound.backSound();
 
         }
         else{
 
-            Main.player.setHP(x+e);
-            if(Main.player.getHP() > 100){
+            setHP(x+e);
+            if(getHP() > 100){
 
-                Main.player.setHP(100);
+                setHP(100);
 
             }
+            setInventory(index, new Empty());
 
         }
-        Main.player.setInventory(index, new Empty());
+
+    }
+    public void useShield(Item item, int index){
+
+        int e = item.getModifier();
+        setShields(getShields()+e);
+        inventory[index] = new Empty();
+
+    }
+    public void useMullet(Item item, int index){
+
+        int e = item.getModifier();
+        setDamageBonus(getDamageBonus()+e);
+        inventory[index] = new Empty();
 
     }
 

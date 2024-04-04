@@ -10,6 +10,12 @@ public class Sound {
         playSound(filepath);
 
     }
+    public static void unavailableSound(){
+
+        String filepath = "Sounds/unavailable.wav";
+        playSound(filepath);
+
+    }
     public static void errorSound(){
 
         String filepath = "Sounds/error.wav";
@@ -24,7 +30,23 @@ public class Sound {
     }
     public static void introSound(){
 
-        String filepath = "Sounds/intro.wav";
+        String filepath = "";
+        int rand = (int)(Math.random()*3+1);
+        if(rand == 1){
+
+            filepath = "Sounds/intro1.wav";
+
+        }
+        else if(rand == 2){
+
+            filepath = "Sounds/intro2.wav";
+
+        }
+        else if(rand == 3) {
+
+            filepath = "Sounds/intro3.wav";
+
+        }
         playSound(filepath);
 
     }

@@ -169,7 +169,7 @@ public class InventoryWindow extends JPanel {
 
             g.drawString("This Item: "+Main.player.getInventory()[Main.inventorySelected].getModifier(), 330, 280);
 
-            if(!Main.player.getInventory()[Main.inventorySelected].getName().equals("Bandage")){
+            if(!Main.player.getInventory()[Main.inventorySelected].getName().equals("Bandage") && !Main.player.getInventory()[Main.inventorySelected].getName().equals("Empty")){
 
                 g.drawString("(Stackable)", 330, 300);
 

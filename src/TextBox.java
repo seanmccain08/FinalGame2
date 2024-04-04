@@ -14,11 +14,11 @@ public abstract class TextBox {
 
         g.setFont(textBoxFont);
         g.setColor(Color.black);
-        g.fillRect(100, 50, 350, 250);
+        g.fillRect(825, 110, 350, 250);
         g.setColor(Color.white);
-        g.drawString(t ,110, 100);
+        g.drawString(t ,835, 160);
         g.setFont(body);
-        g.drawString(s, 110, 190);
+        g.drawString(s, 835, 255);
         g.setFont(textBoxFont);
 
     }
@@ -29,120 +29,219 @@ public abstract class TextBox {
 
             Sound.altSelectSound();
             Sound.expandSound();
-//            Main.player.setHP(Main.player.getHP()-1);
-//            PrateekFight.frame = 0;
-//            PrateekFight.checkHP = true;
 
-            while(true){
+            if(Main.currentOpponent.equals("Prateek")) {
+                while (true) {
 
-                String s = JOptionPane.showInputDialog("To attack Prateek, you must type in a number between 1-12.\nA random number between 1-12 will be selected to compare,\nand the difference between the two is how much you hit the opponent for.\n\n(If you enter 3 and the number is 7, you will do\n4 damage because 7-3 = 4)");
-                if(s.equals("1") || s.equals("2") || s.equals("3") || s.equals("4") || s.equals("5") || s.equals("6") || s.equals("7") || s.equals("8") || s.equals("9") || s.equals("10") || s.equals("11") || s.equals("12")){
+                    String s = JOptionPane.showInputDialog("To attack Prateek, you must type in a number between 1-12.\nA random number between 1-12 will be selected to compare,\nand the difference between the two is how much you hit the opponent for.\n\n(If you enter 3 and the number is 7, you will do\n4 damage because 7-3 = 4)");
+                    if (s.equals("1") || s.equals("2") || s.equals("3") || s.equals("4") || s.equals("5") || s.equals("6") || s.equals("7") || s.equals("8") || s.equals("9") || s.equals("10") || s.equals("11") || s.equals("12")) {
 
-                    Sound.altSelectSound();
-                    int x = Integer.parseInt(s);
-                    int comparison = (int)(Math.random()*12+1);
-                    if(comparison == x){
-
-                        JOptionPane.showMessageDialog(null, "You picked the same number as the number generator,\ndealing 0 damage to Prateek. Unlucky.");
                         Sound.altSelectSound();
-                        int damage = (int)(Math.random()*6);
-                        Main.player.setHP(Main.player.getHP()-damage);
-                        if(damage == 0){
+                        int x = Integer.parseInt(s);
+                        int comparison = (int) (Math.random() * 12 + 1);
+                        if (comparison == x) {
 
-                            JOptionPane.showMessageDialog(null, "Prateek somehow managed to miss you,\ndealing no damage!");
+                            JOptionPane.showMessageDialog(null, "You picked the same number as the number generator,\ndealing " + (0 + Main.player.getDamageBonus()) + " damage to Prateek.");
+                            PrateekFight.prateekHP = PrateekFight.prateekHP - Main.player.getDamageBonus();
+                            if (PrateekFight.prateekHP <= 0) {
+
+                                PrateekFight.prateekHP = 0;
+                                Main.prateekFightWindow.setVisible(false);
+                                Sound.expandSound();
+                                JOptionPane.showMessageDialog(null, "You Won! You will keep\nyour damage bonus & shields!");
+                                Sound.backSound();
+                                Sound.introSound();
+                                Menu.logoChoice = (int)(Math.random()*6+1);
+                                Main.frame.setVisible(true);
+                                break;
+
+                            }
+                            Sound.altSelectSound();
+                            if (Main.player.getShields() == 0) {
+                                int damage = (int) (Math.random() * 6);
+                                Main.player.setHP(Main.player.getHP() - damage);
+                                if (damage == 0) {
+
+                                    JOptionPane.showMessageDialog(null, "Prateek somehow managed to miss you,\ndealing no damage! If you have a shield,\nit will not be used!");
+                                    Sound.altSelectSound();
+
+                                } else {
+
+                                    JOptionPane.showMessageDialog(null, "Prateek hit you for " + damage + " damage!");
+
+                                }
+                            } else {
+
+                                JOptionPane.showMessageDialog(null, "Prateek bounced off of your shield & broke it!");
+                                Main.player.setShields(Main.player.getShields() - 1);
+
+                            }
+                            Sound.altSelectSound();
+                            Sound.backSound();
+                            break;
+
+                        } else if (comparison < x) {
+
+                            int damage = (x - comparison);
+                            PrateekFight.prateekHP -= (damage + Main.player.getDamageBonus());
+                            JOptionPane.showMessageDialog(null, "You picked " + s + ", and the generator chose " + comparison + ".\nYou dealt " + (damage + Main.player.getDamageBonus()) + " damage to Prateek!");
+                            Sound.altSelectSound();
+
+                        } else {
+
+                            int damage = (comparison - x);
+                            PrateekFight.prateekHP -= (damage + Main.player.getDamageBonus());
+                            JOptionPane.showMessageDialog(null, "You picked " + s + ", and the generator chose " + comparison + ".\nYou dealt " + (damage + Main.player.getDamageBonus()) + " damage to Prateek!");
                             Sound.altSelectSound();
 
                         }
-                        else{
+                        if (PrateekFight.prateekHP <= 0) {
 
-                            JOptionPane.showMessageDialog(null, "Prateek hit you for "+damage+" damage!");
-                            Sound.altSelectSound();
+                            PrateekFight.prateekHP = 0;
+                            Main.prateekFightWindow.setVisible(false);
+                            Sound.expandSound();
+                            JOptionPane.showMessageDialog(null, "You Won! You will keep\nyour damage bonus & shields!");
+                            Sound.backSound();
+                            Sound.introSound();
+                            Menu.logoChoice = (int)(Math.random()*6+1);
+                            Main.frame.setVisible(true);
+                            break;
 
                         }
+                        if (Main.player.getShields() == 0) {
+
+                            int damage = (int) (Math.random() * 10 + 1);
+                            Main.player.setHP(Main.player.getHP() - damage);
+                            JOptionPane.showMessageDialog(null, "Prateek hit you for " + damage + " damage!");
+
+                        } else {
+
+                            JOptionPane.showMessageDialog(null, "Prateek bounced off of your shield & broke it!");
+                            Main.player.setShields(Main.player.getShields() - 1);
+
+                        }
+                        Sound.altSelectSound();
                         Sound.backSound();
+                        if (Main.player.getHP() <= 0) {
+
+                            Main.prateekFightWindow.setVisible(false);
+                            int close = JOptionPane.showConfirmDialog(null, "You Lost");
+                            if (close == JOptionPane.YES_OPTION) {
+
+                                Sound.backSound();
+                                try {
+                                    Thread.sleep(100);
+                                } catch (InterruptedException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                System.exit(0);
+
+                            } else {
+
+                                Menu.logoChoice = (int)(Math.random()*6+1);
+                                Main.player.setShields(0);
+                                Main.player.setDamageBonus(0);
+                                Sound.introSound();
+                                Main.prateekFightWindow.setVisible(false);
+                                Main.frame.setVisible(true);
+
+                            }
+
+                        }
                         break;
 
-                    }
-                    else if(comparison < x){
+                    } else {
 
-                        int damage = (x-comparison);
-                        PrateekFight.prateekHP -= damage;
-                        JOptionPane.showMessageDialog(null, "You picked "+s+", and the generator chose "+comparison+".\nYou dealt "+damage+" damage to Prateek!");
-                        Sound.altSelectSound();
+                        Sound.errorSound();
+                        JOptionPane.showMessageDialog(null, "Please enter a number 1-12.");
+                        Sound.expandSound();
+
+                    }
+
+                }
+            }
+            else if(Main.currentOpponent == "Jack"){
+
+
+
+            }
+            else if(Main.currentOpponent == "Ryan"){
+
+
+
+            }
+        }
+        else if(Main.gameSelected == 1){
+
+            if(Main.currentOpponent.equals("Prateek")){
+
+                Sound.altSelectSound();
+                PrateekFight.rand = (int)(Math.random()*3);
+                while(true){
+
+                    if(PrateekFight.rand == previousReason){
+
+                        PrateekFight.rand = (int)(Math.random()*3);
 
                     }
                     else{
 
-                        int damage = (comparison-x);
-                        PrateekFight.prateekHP -= damage;
-                        JOptionPane.showMessageDialog(null, "You picked "+s+", and the generator chose "+comparison+".\nYou dealt "+damage+" damage to Prateek!");
-                        Sound.altSelectSound();
+                        break;
 
                     }
-                    int damage = (int)(Math.random()*10+1);
-                    Main.player.setHP(Main.player.getHP()-damage);
-                    JOptionPane.showMessageDialog(null, "Prateek hit you back for "+damage+" damage!");
-                    Sound.altSelectSound();
-                    Sound.backSound();
-                    if(Main.player.getHP() <= 0){
 
-                        Main.prateekFightWindow.setVisible(false);
-                        int close = JOptionPane.showConfirmDialog(null, "You Lost");
-                        if(close == JOptionPane.YES_OPTION){
+                }
+                previousReason = PrateekFight.rand;
+                PrateekFight.reason = true;
+                PrateekFight.reasonDuration = 0;
 
-                            Sound.backSound();
-                            try {
-                                Thread.sleep(100);
-                            } catch (InterruptedException e) {
-                                throw new RuntimeException(e);
-                            }
-                            System.exit(0);
+            }
+            else if(Main.currentOpponent.equals("Jack")){
 
-                        }
-                        else{
+                Sound.altSelectSound();
+                JackFight.rand = (int)(Math.random()*3);
+                while(true){
 
-                            Sound.introSound();
-                            Main.prateekFightWindow.setVisible(false);
-                            Main.frame.setVisible(true);
+                    if(JackFight.rand == previousReason){
 
-                        }
+                        JackFight.rand = (int)(Math.random()*3);
 
                     }
-                    break;
+                    else{
+
+                        break;
+
+                    }
 
                 }
-                else{
-
-                    Sound.errorSound();
-                    JOptionPane.showMessageDialog(null, "Please enter a number 1-15.");
-                    Sound.expandSound();
-
-                }
+                previousReason = JackFight.rand;
+                JackFight.reason = true;
+                JackFight.reasonDuration = 0;
 
             }
+            else if(Main.currentOpponent == "Ryan"){
 
-        }
-        else if(Main.gameSelected == 1){
+                Sound.altSelectSound();
+                RyanFight.rand = (int)(Math.random()*3);
+                while(true){
 
-            Sound.altSelectSound();
-            PrateekFight.rand = (int)(Math.random()*3);
-            while(true){
+                    if(RyanFight.rand == previousReason){
 
-                if(PrateekFight.rand == previousReason){
+                        RyanFight.rand = (int)(Math.random()*3);
 
-                    PrateekFight.rand = (int)(Math.random()*3);
+                    }
+                    else{
+
+                        break;
+
+                    }
 
                 }
-                else{
-
-                    break;
-
-                }
+                previousReason = RyanFight.rand;
+                RyanFight.reason = true;
+                RyanFight.reasonDuration = 0;
 
             }
-            previousReason = PrateekFight.rand;
-            PrateekFight.reason = true;
-            PrateekFight.reasonDuration = 0;
 
         }
         else if(Main.gameSelected == 2){
@@ -156,13 +255,14 @@ public abstract class TextBox {
         else{
 
             Sound.errorSound();
+            Sound.expandSound();
+            int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?\nYou will lose all progress!");
             Sound.backSound();
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+            if(choice == JOptionPane.YES_OPTION){
+
+                System.exit(0);
+
             }
-            System.exit(0);
 
         }
 

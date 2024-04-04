@@ -20,6 +20,8 @@ public class Menu extends JPanel {
     static boolean changeG = true;
     static boolean changeB = false;
 
+    public static int logoChoice = (int)(Math.random()*6+1);
+
 
     @Override
     public void paintComponent(Graphics g){
@@ -79,11 +81,34 @@ public class Menu extends JPanel {
 
             setBackground(new Color(colorR, colorG, colorB));
             g.setFont(defaultFont);
-            g.drawString("Use the arrow keys & press enter to select an option.", 0, 20);
-            g.drawString("Alpha 1.7", 0, 685);
+            g.setColor(Color.white);
+            g.drawString(Main.version, 0, 685);
             g.setColor(Color.WHITE);
             g.setFont(titleFont);
-            g.drawString("Battle Simulator", 250, 200);
+            ImageIcon logo = new ImageIcon();
+            switch(logoChoice){
+
+                case 1:
+                    logo = new ImageIcon("Images/logo1.png");
+                    break;
+                case 2:
+                    logo = new ImageIcon("Images/logo2.png");
+                    break;
+                case 3:
+                    logo = new ImageIcon("Images/logo3.png");
+                    break;
+                case 4:
+                    logo = new ImageIcon("Images/logo4.png");
+                    break;
+                case 5:
+                    logo = new ImageIcon("Images/logo5.png");
+                    break;
+                case 6:
+                    logo = new ImageIcon("Images/logo6.png");
+                    break;
+
+            }
+            g.drawImage(logo.getImage(), 140, 85, 1000, 200, null);
             g.setFont(optionFont);
             if(Main.menuSelected == 0){
 
@@ -124,7 +149,14 @@ public class Menu extends JPanel {
     }
     public static void quit(){
 
-        System.exit(0);
+        Sound.expandSound();
+        int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?\nYou will lose all progress!");
+        Sound.backSound();
+        if(choice == JOptionPane.YES_OPTION){
+
+            System.exit(0);
+
+        }
 
     }
     public void start(Graphics g){

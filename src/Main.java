@@ -5,6 +5,8 @@ import java.awt.event.KeyEvent;
 
 public class Main {
 
+    public static String version = "Alpha 1.8";
+    public static String currentOpponent = "";
     public static Player player = new Player();
     public static int games = 0;
     public static int menuSelected = 0;
@@ -26,6 +28,8 @@ public class Main {
     public static JFrame ryanFightWindow = new JFrame("Battle Simulator - Ryan");
     public static JFrame lukeFightWindow = new JFrame("Battle Simulator - Luke");
     public static PrateekFight prateekFight = new PrateekFight();
+    public static JackFight jackFight = new JackFight();
+    public static RyanFight ryanFight = new RyanFight();
 
     public static void main(String[] args) {
 
@@ -45,11 +49,13 @@ public class Main {
         jackFightWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         jackFightWindow.setResizable(false);
         jackFightWindow.setBackground(Color.black);
+        jackFightWindow.add(jackFight);
         ryanFightWindow.setSize(1280, 720);
         ryanFightWindow.setLocationRelativeTo(null);
         ryanFightWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         ryanFightWindow.setResizable(false);
         ryanFightWindow.setBackground(Color.black);
+        ryanFightWindow.add(ryanFight);
         lukeFightWindow.setSize(1280, 720);
         lukeFightWindow.setLocationRelativeTo(null);
         lukeFightWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -80,12 +86,6 @@ public class Main {
                     }
                     else{
 
-                        Sound.backSound();
-                        try {
-                            Thread.sleep(100);
-                        } catch (InterruptedException ex) {
-                            throw new RuntimeException(ex);
-                        }
                         Menu.quit();
 
                     }
@@ -135,6 +135,7 @@ public class Main {
 
                         //Prateek
                         games++;
+                        currentOpponent = "Prateek";
                         frame1.setVisible(false);
                         prateekFight = new PrateekFight();
                         prateekFightWindow.setVisible(true);
@@ -144,7 +145,9 @@ public class Main {
 
                         //Jack
                         games++;
+                        currentOpponent = "Jack";
                         frame1.setVisible(false);
+                        jackFight = new JackFight();
                         jackFightWindow.setVisible(true);
 
                     }
@@ -152,7 +155,9 @@ public class Main {
 
                         //Ryan
                         games++;
+                        currentOpponent = "Ryan";
                         frame1.setVisible(false);
+                        ryanFight = new RyanFight();
                         ryanFightWindow.setVisible(true);
 
                     }
@@ -160,6 +165,7 @@ public class Main {
 
                         //Luke
                         games++;
+                        currentOpponent = "Luke";
                         frame1.setVisible(false);
                         lukeFightWindow.setVisible(true);
 
@@ -240,6 +246,44 @@ public class Main {
             }
         });
 
+        jackFightWindow.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                int key = e.getKeyCode();
+                // Keys for menu interaction: "E", "Space", "Enter/Return"
+                if(key == 32 || key == 10 || key == 69){
+
+                    TextBox.select();
+
+                }
+                else{
+
+                    TextBox.setGameSelected(e);
+
+                }
+
+            }
+        });
+        ryanFightWindow.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                int key = e.getKeyCode();
+                // Keys for menu interaction: "E", "Space", "Enter/Return"
+                if(key == 32 || key == 10 || key == 69){
+
+                    TextBox.select();
+
+                }
+                else{
+
+                    TextBox.setGameSelected(e);
+
+                }
+
+            }
+        });
         inventoryWindow.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -251,10 +295,27 @@ public class Main {
 
                     if(inventorySelected == 0 || inventorySelected == 1 || inventorySelected == 2 || inventorySelected == 3){
 
-                        Sound.altSelectSound();
-                        if(player.getInventory()[inventorySelected].getName().equals("Bandage")){
+                        if(player.getInventory()[inventorySelected].getName().equals("Empty")) {
+
+                            Sound.errorSound();
+
+                        }
+                        else if(player.getInventory()[inventorySelected].getName().equals("Bandage")){
 
                             player.useBandage(player.getInventory()[inventorySelected], inventorySelected);
+                            Sound.altSelectSound();
+
+                        }
+                        else if(player.getInventory()[inventorySelected].getName().equals("Shield")){
+
+                            player.useShield(player.getInventory()[inventorySelected], inventorySelected);
+                            Sound.altSelectSound();
+
+                        }
+                        else if(player.getInventory()[inventorySelected].getName().equals("Mullet")){
+
+                            player.useMullet(player.getInventory()[inventorySelected], inventorySelected);
+                            Sound.altSelectSound();
 
                         }
 
@@ -270,9 +331,9 @@ public class Main {
                 }
                 //arrow keys -- Up/Down
                 if(key == 38 || key == 87){
-                    Sound.optionSound();
                     if(inventorySelected == 0){
 
+                        Sound.optionSound();
                         inventorySelected = 4;
 
                     }
@@ -296,10 +357,19 @@ public class Main {
                         inventorySelected--;
 
                     }
+                    if(inventorySelected < 4 && Main.player.getInventory()[inventorySelected].getName().equals("Empty")){
+
+                        Sound.unavailableSound();
+
+                    }
+                    else{
+
+                        Sound.optionSound();
+
+                    }
 
                 }
                 else if(key == 40 || key == 83){
-                    Sound.optionSound();
                     if(inventorySelected == 0){
 
                         inventorySelected++;
@@ -317,12 +387,23 @@ public class Main {
                     }
                     else if(inventorySelected == 3){
 
+                        Sound.optionSound();
                         inventorySelected++;
 
                     }
                     else{
 
                         inventorySelected = 0;
+
+                    }
+                    if(inventorySelected < 4 && Main.player.getInventory()[inventorySelected].getName().equals("Empty")){
+
+                        Sound.unavailableSound();
+
+                    }
+                    else{
+
+                        Sound.optionSound();
 
                     }
 

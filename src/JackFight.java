@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class PrateekFight extends JPanel {
+public class JackFight extends JPanel {
 
     static int frame = 0;
     static int rand = 0;
@@ -14,13 +14,13 @@ public class PrateekFight extends JPanel {
     static Font playerHPFont = new Font("SansSerif", Font.BOLD, 10);
     static Font numShieldFont = new Font("SansSerif", Font.PLAIN, 40);
     static Font numShieldFontBold = new Font("SansSerif", Font.BOLD, 30);
-    String[] phrases = {"Ok buddy", "You're an idiot", "Alright bro"};
-    static int prateekHP;
+    String[] phrases = {"Type Stuuuuuuufff", "Haha... what?", "Oh gosh"};
+    static int jackHP;
     private int phase = 0;
-    public PrateekFight(){
+    public JackFight(){
 
         setBackground(Color.gray);
-        prateekHP = 150;
+        jackHP = 200;
         criticalHealth = 0;
         checkHP = true;
         reasonDuration = 0;
@@ -44,10 +44,10 @@ public class PrateekFight extends JPanel {
         g.drawString(Main.player.getShields()+"", 70, 378);
         g.drawString(Main.player.getDamageBonus()+"", 70, 328);
         g.setColor(Color.red);
-        g.fillRect(490, 20, 300, 50);
+        g.fillRect(440, 20, 400, 50);
         g.fillRect(0, 680, 1280, 20);
         g.setColor(Color.green);
-        g.fillRect(490, 20, prateekHP*2, 50);
+        g.fillRect(440, 20, jackHP*2, 50);
         int playerHealth = (int)(Main.player.getHP()*12.8);
         if(Main.player.getHP() <= 20){
 
@@ -82,9 +82,9 @@ public class PrateekFight extends JPanel {
         g.setColor(Color.black);
         g.drawString(Main.player.getHP()+"", (playerHealth/2)-5, 690);
         g.setFont(mainFont);
-        g.drawString("HP: "+prateekHP, 590, 55);
-        ImageIcon prateekImage = new ImageIcon("Images/Prateek.png");
-        g.drawImage(prateekImage.getImage(), 490, 75, 300, 300, null);
+        g.drawString("HP: "+jackHP, 590, 55);
+        ImageIcon jackImage = new ImageIcon("Images/Jack.png");
+        g.drawImage(jackImage.getImage(), 490, 75, 300, 300, null);
         TextBox.drawOptions(g);
         if(reason){
 
@@ -96,14 +96,14 @@ public class PrateekFight extends JPanel {
             else{
 
                 reasonDuration++;
-                TextBox.draw(g, phrases[rand], "Prateek");
+                TextBox.draw(g, phrases[rand], "Jack");
 
 
             }
         }
         if(Main.player.getHP() <= 20 && checkHP){
 
-            TextBox.draw(g, "Careful buddy", "Prateek");
+            TextBox.draw(g, "Walkin' on thin ice!", "Jack");
             if(frame > 100){
 
                 checkHP = false;
