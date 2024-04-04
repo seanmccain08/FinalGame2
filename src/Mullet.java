@@ -6,7 +6,7 @@ public class Mullet extends Item{
     public Mullet(){
 
         super("Mullet");
-        damageBuff = (int)(Math.random()*15+10);
+        damageBuff = (int)(Math.random()*4+2);
         modifier = damageBuff;
 
     }
@@ -30,7 +30,7 @@ public class Mullet extends Item{
                 return "decided by a random number";
 
             case 4:
-                return "between 15-25 extra damage,";
+                return "between 2-5 extra damage,";
 
             case 5:
                 return "indicated below.";

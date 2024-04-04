@@ -12,13 +12,15 @@ public abstract class TextBox {
 
     public static void draw(Graphics g, String s, String t){
 
+        int xPos = 825;
+        int yPos = 110;
         g.setFont(textBoxFont);
         g.setColor(Color.black);
-        g.fillRect(825, 110, 350, 250);
+        g.fillRect(xPos, yPos, 350, 250);
         g.setColor(Color.white);
-        g.drawString(t ,835, 160);
+        g.drawString(t ,xPos+10, yPos+50);
         g.setFont(body);
-        g.drawString(s, 835, 255);
+        g.drawString(s, xPos+10, yPos+145);
         g.setFont(textBoxFont);
 
     }
@@ -33,8 +35,8 @@ public abstract class TextBox {
             if(Main.currentOpponent.equals("Prateek")) {
                 while (true) {
 
-                    String s = JOptionPane.showInputDialog("To attack Prateek, you must type in a number between 1-12.\nA random number between 1-12 will be selected to compare,\nand the difference between the two is how much you hit the opponent for.\n\n(If you enter 3 and the number is 7, you will do\n4 damage because 7-3 = 4)");
-                    if (s.equals("1") || s.equals("2") || s.equals("3") || s.equals("4") || s.equals("5") || s.equals("6") || s.equals("7") || s.equals("8") || s.equals("9") || s.equals("10") || s.equals("11") || s.equals("12")) {
+                    String s = JOptionPane.showInputDialog("To attack Prateek, you must type in a number between 1-10.\nA random number between 1-10 will be selected to compare,\nand the difference between the two is how much you hit the opponent for.\n\n(If you enter 3 and the number is 7, you will do\n4 damage because 7-3 = 4)");
+                    if (s != null && (s.equals("1") || s.equals("2") || s.equals("3") || s.equals("4") || s.equals("5") || s.equals("6") || s.equals("7") || s.equals("8") || s.equals("9") || s.equals("10"))) {
 
                         Sound.altSelectSound();
                         int x = Integer.parseInt(s);
@@ -110,7 +112,7 @@ public abstract class TextBox {
                         }
                         if (Main.player.getShields() == 0) {
 
-                            int damage = (int) (Math.random() * 10 + 1);
+                            int damage = (int) (Math.random() * 12 + 1);
                             Main.player.setHP(Main.player.getHP() - damage);
                             JOptionPane.showMessageDialog(null, "Prateek hit you for " + damage + " damage!");
 
@@ -122,38 +124,25 @@ public abstract class TextBox {
                         }
                         Sound.altSelectSound();
                         Sound.backSound();
-                        if (Main.player.getHP() <= 0) {
+                        if (Main.player.getHP() < 1) {
 
                             Main.prateekFightWindow.setVisible(false);
-                            int close = JOptionPane.showConfirmDialog(null, "You Lost");
-                            if (close == JOptionPane.YES_OPTION) {
-
-                                Sound.backSound();
-                                try {
-                                    Thread.sleep(100);
-                                } catch (InterruptedException e) {
-                                    throw new RuntimeException(e);
-                                }
-                                System.exit(0);
-
-                            } else {
-
-                                Menu.logoChoice = (int)(Math.random()*6+1);
-                                Main.player.setShields(0);
-                                Main.player.setDamageBonus(0);
-                                Sound.introSound();
-                                Main.prateekFightWindow.setVisible(false);
-                                Main.frame.setVisible(true);
-
-                            }
+                            JOptionPane.showMessageDialog(null, "You Lost! All bonuses have been removed.");
+                            Menu.logoChoice = (int)(Math.random()*6+1);
+                            Main.player.setShields(0);
+                            Main.player.setDamageBonus(0);
+                            Sound.introSound();
+                            Main.prateekFightWindow.setVisible(false);
+                            Main.frame.setVisible(true);
 
                         }
                         break;
 
-                    } else {
+                    }
+                    else {
 
                         Sound.errorSound();
-                        JOptionPane.showMessageDialog(null, "Please enter a number 1-12.");
+                        JOptionPane.showMessageDialog(null, "Please enter a number 1-10.");
                         Sound.expandSound();
 
                     }
@@ -175,7 +164,7 @@ public abstract class TextBox {
 
             if(Main.currentOpponent.equals("Prateek")){
 
-                Sound.altSelectSound();
+                Sound.reasonSound();
                 PrateekFight.rand = (int)(Math.random()*3);
                 while(true){
 
@@ -198,7 +187,7 @@ public abstract class TextBox {
             }
             else if(Main.currentOpponent.equals("Jack")){
 
-                Sound.altSelectSound();
+                Sound.reasonSound();
                 JackFight.rand = (int)(Math.random()*3);
                 while(true){
 
@@ -221,7 +210,7 @@ public abstract class TextBox {
             }
             else if(Main.currentOpponent == "Ryan"){
 
-                Sound.altSelectSound();
+                Sound.reasonSound();
                 RyanFight.rand = (int)(Math.random()*3);
                 while(true){
 
@@ -242,6 +231,29 @@ public abstract class TextBox {
                 RyanFight.reasonDuration = 0;
 
             }
+            else if(Main.currentOpponent == "Luke"){
+
+                Sound.reasonSound();
+                LukeFight.rand = (int)(Math.random()*3);
+                while(true){
+
+                    if(LukeFight.rand == previousReason){
+
+                        LukeFight.rand = (int)(Math.random()*3);
+
+                    }
+                    else{
+
+                        break;
+
+                    }
+
+                }
+                previousReason = RyanFight.rand;
+                LukeFight.reason = true;
+                LukeFight.reasonDuration = 0;
+
+            }
 
         }
         else if(Main.gameSelected == 2){
@@ -256,11 +268,22 @@ public abstract class TextBox {
 
             Sound.errorSound();
             Sound.expandSound();
-            int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?\nYou will lose all progress!");
+            int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit the battle?\nAll shields & bonuses will be lost!");
             Sound.backSound();
             if(choice == JOptionPane.YES_OPTION){
 
-                System.exit(0);
+                Sound.introSound();
+                Main.games--;
+                Menu.logoChoice = (int)(Math.random()*6+1);
+                Main.gameSelected = 0;
+                Main.opponentSelected = 0;
+                Main.prateekFightWindow.setVisible(false);
+                Main.jackFightWindow.setVisible(false);
+                Main.ryanFightWindow.setVisible(false);
+                Main.lukeFightWindow.setVisible(false);
+                Main.frame.setVisible(true);
+                Main.player.setDamageBonus(0);
+                Main.player.setShields(0);
 
             }
 

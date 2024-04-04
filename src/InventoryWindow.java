@@ -75,9 +75,42 @@ public class InventoryWindow extends JPanel {
             g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
             g.setColor(Color.white);
             g.setFont(mainFont);
-            g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
-            g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
-            g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
+            if(Main.player.getInventory()[1].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
+
+            }
+            if(Main.player.getInventory()[2].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
+
+            }
+            if(Main.player.getInventory()[3].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
+
+            }
             g.drawString("Back", 50, 310);
 
         }
@@ -85,14 +118,46 @@ public class InventoryWindow extends JPanel {
 
             g.setColor(Color.white);
             g.setFont(mainFont);
-            g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
-            g.setColor(Color.yellow);
+            if(Main.player.getInventory()[0].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
+
+            }            g.setColor(Color.yellow);
             g.setFont(boldFont);
             g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
             g.setColor(Color.white);
             g.setFont(mainFont);
-            g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
-            g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
+            if(Main.player.getInventory()[2].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
+
+            }
+            if(Main.player.getInventory()[3].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
+
+            }
             g.drawString("Back", 50, 310);
 
         }
@@ -100,14 +165,47 @@ public class InventoryWindow extends JPanel {
 
             g.setColor(Color.white);
             g.setFont(mainFont);
-            g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
-            g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
+            if(Main.player.getInventory()[0].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
+
+            }
+            if(Main.player.getInventory()[1].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
+
+            }
             g.setColor(Color.yellow);
             g.setFont(boldFont);
             g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
             g.setColor(Color.white);
             g.setFont(mainFont);
-            g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
+            if(Main.player.getInventory()[3].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
+
+            }
             g.drawString("Back", 50, 310);
 
         }
@@ -115,9 +213,42 @@ public class InventoryWindow extends JPanel {
 
             g.setColor(Color.white);
             g.setFont(mainFont);
-            g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
-            g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
-            g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
+            if(Main.player.getInventory()[0].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
+
+            }
+            if(Main.player.getInventory()[1].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
+
+            }
+            if(Main.player.getInventory()[2].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
+
+            }
             g.setColor(Color.yellow);
             g.setFont(boldFont);
             g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
@@ -130,10 +261,54 @@ public class InventoryWindow extends JPanel {
 
             g.setColor(Color.white);
             g.setFont(mainFont);
-            g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
-            g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
-            g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
-            g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
+            if(Main.player.getInventory()[0].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[0].getName(), 50, 75);
+
+            }
+            if(Main.player.getInventory()[1].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[1].getName(), 50, 125);
+
+            }
+            if(Main.player.getInventory()[2].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[2].getName(), 50, 175);
+
+            }
+            if(Main.player.getInventory()[3].getName().equals("Empty")){
+
+                g.setColor(Color.gray);
+                g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
+                g.setColor(Color.white);
+
+            }
+            else{
+
+                g.drawString(Main.player.getInventory()[3].getName(), 50, 225);
+
+            }
             g.setColor(Color.yellow);
             g.setFont(boldFont);
             g.drawString("Back", 50, 310);

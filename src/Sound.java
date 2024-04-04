@@ -28,23 +28,37 @@ public class Sound {
         playSound(filepath);
 
     }
+    public static void typeSound(){
+
+        String filepath = "Sounds/type.wav";
+        playSound(filepath);
+
+    }
     public static void introSound(){
 
         String filepath = "";
-        int rand = (int)(Math.random()*3+1);
-        if(rand == 1){
+        int rand = (int)(Math.random()*5+1);
+        switch (rand){
 
-            filepath = "Sounds/intro1.wav";
+            case 1:
+                filepath = "Sounds/intro1.wav";
+                break;
 
-        }
-        else if(rand == 2){
+            case 2:
+                filepath = "Sounds/intro2.wav";
+                break;
 
-            filepath = "Sounds/intro2.wav";
+            case 3:
+                filepath = "Sounds/intro3.wav";
+                break;
 
-        }
-        else if(rand == 3) {
+            case 4:
+                filepath = "Sounds/intro4.wav";
+                break;
 
-            filepath = "Sounds/intro3.wav";
+            case 5:
+                filepath = "Sounds/intro5.wav";
+                break;
 
         }
         playSound(filepath);
@@ -53,6 +67,24 @@ public class Sound {
     public static void expandSound(){
 
         String filepath = "Sounds/expand.wav";
+        playSound(filepath);
+
+    }
+    public static void reasonSound(){
+
+        String filepath = "";
+        int rand = (int)(Math.random()*2+1);
+        switch (rand){
+
+            case 1:
+                filepath = "Sounds/reason1.wav";
+                break;
+
+            case 2:
+                filepath = "Sounds/reason2.wav";
+                break;
+
+        }
         playSound(filepath);
 
     }

@@ -5,7 +5,7 @@ import java.awt.event.KeyEvent;
 
 public class Main {
 
-    public static String version = "Alpha 1.8";
+    public static String version = "Update 0.7";
     public static String currentOpponent = "";
     public static Player player = new Player();
     public static int games = 0;
@@ -30,6 +30,7 @@ public class Main {
     public static PrateekFight prateekFight = new PrateekFight();
     public static JackFight jackFight = new JackFight();
     public static RyanFight ryanFight = new RyanFight();
+    public static LukeFight lukeFight = new LukeFight();
 
     public static void main(String[] args) {
 
@@ -61,6 +62,7 @@ public class Main {
         lukeFightWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         lukeFightWindow.setResizable(false);
         lukeFightWindow.setBackground(Color.black);
+        lukeFightWindow.add(lukeFight);
 
         frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         frame.setSize(1280, 720);
@@ -284,6 +286,25 @@ public class Main {
 
             }
         });
+        lukeFightWindow.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                int key = e.getKeyCode();
+                // Keys for menu interaction: "E", "Space", "Enter/Return"
+                if(key == 32 || key == 10 || key == 69){
+
+                    TextBox.select();
+
+                }
+                else{
+
+                    TextBox.setGameSelected(e);
+
+                }
+
+            }
+        });
         inventoryWindow.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -333,7 +354,6 @@ public class Main {
                 if(key == 38 || key == 87){
                     if(inventorySelected == 0){
 
-                        Sound.optionSound();
                         inventorySelected = 4;
 
                     }
@@ -387,7 +407,6 @@ public class Main {
                     }
                     else if(inventorySelected == 3){
 
-                        Sound.optionSound();
                         inventorySelected++;
 
                     }

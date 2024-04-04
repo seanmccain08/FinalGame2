@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class JackFight extends JPanel {
+public class LukeFight extends JPanel {
 
     static int frame = 0;
     static int rand = 0;
@@ -13,12 +13,12 @@ public class JackFight extends JPanel {
     static Font mainFont = new Font("SansSerif", Font.PLAIN, 25);
     static Font playerHPFont = new Font("SansSerif", Font.BOLD, 10);
     static Font numShieldFont = new Font("SansSerif", Font.PLAIN, 40);
-    String[] phrases = {"Type Stuuuuuuufff", "Haha... what?", "Oh gosh"};
-    static int jackHP;
-    public JackFight(){
+    String[] phrases = {"","",""};
+    static int lukeHP;
+    public LukeFight(){
 
         setBackground(Color.gray);
-        jackHP = 200;
+        lukeHP = 450;
         criticalHealth = 0;
         checkHP = true;
         reasonDuration = 0;
@@ -42,10 +42,10 @@ public class JackFight extends JPanel {
         g.drawString(Main.player.getShields()+"", 70, 378);
         g.drawString(Main.player.getDamageBonus()+"", 70, 328);
         g.setColor(Color.red);
-        g.fillRect(440, 20, 400, 50);
+        g.fillRect(190, 20, 900, 50);
         g.fillRect(0, 680, 1280, 20);
         g.setColor(Color.green);
-        g.fillRect(440, 20, jackHP*2, 50);
+        g.fillRect(190, 20, lukeHP*2, 50);
         int playerHealth = (int)(Main.player.getHP()*12.8);
         if(Main.player.getHP() <= 20){
 
@@ -80,9 +80,9 @@ public class JackFight extends JPanel {
         g.setColor(Color.black);
         g.drawString(Main.player.getHP()+"", (playerHealth/2)-5, 690);
         g.setFont(mainFont);
-        g.drawString("HP: "+jackHP, 590, 55);
-        ImageIcon jackImage = new ImageIcon("Images/Jack.png");
-        g.drawImage(jackImage.getImage(), 490, 75, 300, 300, null);
+        g.drawString("HP: "+lukeHP, 590, 55);
+        ImageIcon lukeImage = new ImageIcon("Images/luke.png");
+        g.drawImage(lukeImage.getImage(), 490, 75, 300, 300, null);
         TextBox.drawOptions(g);
         if(reason){
 
@@ -94,14 +94,14 @@ public class JackFight extends JPanel {
             else{
 
                 reasonDuration++;
-                TextBox.draw(g, phrases[rand], "Jack");
+                TextBox.draw(g, phrases[rand], "Luke");
 
 
             }
         }
         if(Main.player.getHP() <= 20 && checkHP){
 
-            TextBox.draw(g, "Walkin' on thin ice!", "Jack");
+            TextBox.draw(g, "Careful buddy", "Luke");
             if(frame > 100){
 
                 checkHP = false;

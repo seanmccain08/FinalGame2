@@ -13,10 +13,8 @@ public class PrateekFight extends JPanel {
     static Font mainFont = new Font("SansSerif", Font.PLAIN, 25);
     static Font playerHPFont = new Font("SansSerif", Font.BOLD, 10);
     static Font numShieldFont = new Font("SansSerif", Font.PLAIN, 40);
-    static Font numShieldFontBold = new Font("SansSerif", Font.BOLD, 30);
     String[] phrases = {"Ok buddy", "You're an idiot", "Alright bro"};
     static int prateekHP;
-    private int phase = 0;
     public PrateekFight(){
 
         setBackground(Color.gray);
@@ -119,11 +117,6 @@ public class PrateekFight extends JPanel {
         }
         frame++;
         repaint();
-
-    }
-    public void reason(){
-
-
 
     }
 

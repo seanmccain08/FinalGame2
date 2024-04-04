@@ -100,6 +100,7 @@ public class Player {
         int x = getHP();
         if(x == 100){
 
+            Sound.altSelectSound();
             Sound.expandSound();
             JOptionPane.showMessageDialog(null, "You already have max health!");
             Sound.backSound();

@@ -13,10 +13,8 @@ public class RyanFight extends JPanel {
     static Font mainFont = new Font("SansSerif", Font.PLAIN, 25);
     static Font playerHPFont = new Font("SansSerif", Font.BOLD, 10);
     static Font numShieldFont = new Font("SansSerif", Font.PLAIN, 40);
-    static Font numShieldFontBold = new Font("SansSerif", Font.BOLD, 30);
     String[] phrases = {"Alriiiiiiiight", "Bad Aim", "Bro what are you doing"};
     static int ryanHP;
-    private int phase = 0;
     public RyanFight(){
 
         setBackground(Color.gray);
@@ -119,11 +117,6 @@ public class RyanFight extends JPanel {
         }
         frame++;
         repaint();
-
-    }
-    public void reason(){
-
-
 
     }
 
