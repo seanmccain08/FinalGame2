@@ -10,6 +10,8 @@ public abstract class TextBox {
 
     static int previousReason = 0;
 
+    static String[] jackFightOptions = {"Heads", "Tails"};
+
     public static void draw(Graphics g, String s, String t){
 
         int xPos = 825;
@@ -40,7 +42,7 @@ public abstract class TextBox {
 
                         Sound.altSelectSound();
                         int x = Integer.parseInt(s);
-                        int comparison = (int) (Math.random() * 12 + 1);
+                        int comparison = (int) (Math.random() * 10 + 1);
                         if (comparison == x) {
 
                             JOptionPane.showMessageDialog(null, "You picked the same number as the number generator,\ndealing " + (0 + Main.player.getDamageBonus()) + " damage to Prateek.");
@@ -151,7 +153,121 @@ public abstract class TextBox {
             }
             else if(Main.currentOpponent == "Jack"){
 
+                while (true) {
+                    int s = JOptionPane.showOptionDialog(null, "To attack Jack, you must choose heads or tails.\nA random coin flip will determine if you hit or miss.\nJack will then flip a coin to hit you back.\n\nUse tab to cycle options and space to select.", "Fight Jack", 1, 1, null, jackFightOptions, 1);
+                    //String s = JOptionPane.showInputDialog("To attack Jack, you must type in a number between 1-10.\nA random number between 1-10 will be selected to compare,\nand the difference between the two is how much you hit the opponent for.\n\n(If you enter 3 and the number is 7, you will do\n4 damage because 7-3 = 4)");
+                    if (s == 1) {
 
+                        Sound.altSelectSound();
+                        int x = s;
+                        int comparison = (int) (Math.random() * 10 + 1);
+                        if (comparison == x) {
+
+                            JOptionPane.showMessageDialog(null, "You picked the same number as the number generator,\ndealing " + (0 + Main.player.getDamageBonus()) + " damage to Jack.");
+                            JackFight.jackHP = JackFight.jackHP - Main.player.getDamageBonus();
+                            if (PrateekFight.prateekHP <= 0) {
+
+                                JackFight.jackHP = 0;
+                                Main.jackFightWindow.setVisible(false);
+                                Sound.expandSound();
+                                JOptionPane.showMessageDialog(null, "You Won! You will keep\nyour damage bonus & shields!");
+                                Sound.backSound();
+                                Sound.introSound();
+                                Menu.logoChoice = (int)(Math.random()*6+1);
+                                Main.frame.setVisible(true);
+                                break;
+
+                            }
+                            Sound.altSelectSound();
+                            if (Main.player.getShields() == 0) {
+                                int damage = (int) (Math.random() * 6);
+                                Main.player.setHP(Main.player.getHP() - damage);
+                                if (damage == 0) {
+
+                                    JOptionPane.showMessageDialog(null, "Jack somehow managed to miss you,\ndealing no damage! If you have a shield,\nit will not be used!");
+                                    Sound.altSelectSound();
+
+                                } else {
+
+                                    JOptionPane.showMessageDialog(null, "Jack hit you for " + damage + " damage!");
+
+                                }
+                            } else {
+
+                                JOptionPane.showMessageDialog(null, "Jack bounced off of your shield & broke it!");
+                                Main.player.setShields(Main.player.getShields() - 1);
+
+                            }
+                            Sound.altSelectSound();
+                            Sound.backSound();
+                            break;
+
+                        } else if (comparison < x) {
+
+                            int damage = (x - comparison);
+                            JackFight.jackHP -= (damage + Main.player.getDamageBonus());
+                            JOptionPane.showMessageDialog(null, "You picked " + s + ", and the generator chose " + comparison + ".\nYou dealt " + (damage + Main.player.getDamageBonus()) + " damage to Jack!");
+                            Sound.altSelectSound();
+
+                        } else {
+
+                            int damage = (comparison - x);
+                            JackFight.jackHP -= (damage + Main.player.getDamageBonus());
+                            JOptionPane.showMessageDialog(null, "You picked " + s + ", and the generator chose " + comparison + ".\nYou dealt " + (damage + Main.player.getDamageBonus()) + " damage to Jack!");
+                            Sound.altSelectSound();
+
+                        }
+                        if (JackFight.jackHP <= 0) {
+
+                            JackFight.jackHP = 0;
+                            Main.jackFightWindow.setVisible(false);
+                            Sound.expandSound();
+                            JOptionPane.showMessageDialog(null, "You Won! You will keep\nyour damage bonus & shields!");
+                            Sound.backSound();
+                            Sound.introSound();
+                            Menu.logoChoice = (int)(Math.random()*6+1);
+                            Main.frame.setVisible(true);
+                            break;
+
+                        }
+                        if (Main.player.getShields() == 0) {
+
+                            int damage = (int) (Math.random() * 12 + 1);
+                            Main.player.setHP(Main.player.getHP() - damage);
+                            JOptionPane.showMessageDialog(null, "Jack hit you for " + damage + " damage!");
+
+                        } else {
+
+                            JOptionPane.showMessageDialog(null, "Jack bounced off of your shield & broke it!");
+                            Main.player.setShields(Main.player.getShields() - 1);
+
+                        }
+                        Sound.altSelectSound();
+                        Sound.backSound();
+                        if (Main.player.getHP() < 1) {
+
+                            Main.jackFightWindow.setVisible(false);
+                            JOptionPane.showMessageDialog(null, "You Lost! All bonuses have been removed.");
+                            Menu.logoChoice = (int)(Math.random()*6+1);
+                            Main.player.setShields(0);
+                            Main.player.setDamageBonus(0);
+                            Sound.introSound();
+                            Main.jackFight.setVisible(false);
+                            Main.frame.setVisible(true);
+
+                        }
+                        break;
+
+                    }
+                    else {
+
+                        Sound.errorSound();
+                        JOptionPane.showMessageDialog(null, "Please enter a number 1-10.");
+                        Sound.expandSound();
+
+                    }
+
+                }
 
             }
             else if(Main.currentOpponent == "Ryan"){
