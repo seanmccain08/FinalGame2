@@ -90,7 +90,7 @@ public class Menu extends JPanel {
         }
 
         try {
-            Thread.sleep(7);
+            Thread.sleep(10);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
