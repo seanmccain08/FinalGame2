@@ -6,7 +6,7 @@ public class Sound {
 
     public static void selectSound(){
 
-        String filepath = "Sounds/select.wav";
+        String filepath = "Sounds/select1.wav";
         playSound(filepath);
 
     }
@@ -24,13 +24,7 @@ public class Sound {
     }
     public static void altSelectSound(){
 
-        String filepath = "Sounds/altSelect.wav";
-        playSound(filepath);
-
-    }
-    public static void typeSound(){
-
-        String filepath = "Sounds/type.wav";
+        String filepath = "Sounds/select2.wav";
         playSound(filepath);
 
     }
@@ -96,7 +90,13 @@ public class Sound {
     }
     public static void backSound(){
 
-        String filepath = "Sounds/back.wav";
+        String filepath = "Sounds/back1.wav";
+        playSound(filepath);
+
+    }
+    public static void altBackSound(){
+
+        String filepath = "Sounds/back2.wav";
         playSound(filepath);
 
     }

@@ -2,14 +2,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Main {
 
-    public static String version = "Update 0.7";
+
+    public static String version = "Update 0.8";
     public static String currentOpponent = "";
     public static Player player = new Player();
     public static int games = 0;
+    public static int wins = 0;
+    public static int losses = 0;
+    public static int saveDataSelected = 0;
     public static int menuSelected = 0;
+    public static int coinFlipSelected = 0;
     public static int inventorySelected = 0;
     public static int opponentSelected = 0;
     public static int gameSelected = 0;
@@ -20,7 +27,11 @@ public class Main {
 
     //Inventory Window
     public static JFrame inventoryWindow = new JFrame("Inventory");
+    public static JFrame coinFlipWindow = new JFrame("Flip a coin");
+    public static JFrame saveDataWindow = new JFrame("Load Game");
     public static InventoryWindow inventory = new InventoryWindow();
+    public static CoinFlipWindow coinFlip = new CoinFlipWindow();
+    public static SaveDataWindow saveData = new SaveDataWindow();
 
     //Game Windows
     public static JFrame prateekFightWindow = new JFrame("Battle Simulator - Prateek");
@@ -33,12 +44,39 @@ public class Main {
     public static LukeFight lukeFight = new LukeFight();
 
     public static void main(String[] args) {
+        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        frame.setSize(1280, 720);
+        frame.setBackground(Color.black);
+        frame.setLocationRelativeTo(null);
+        frame.add(menu);
+        frame.setResizable(false);
+        saveDataWindow.add(saveData);
+        saveDataWindow.setSize(600, 400);
+        saveDataWindow.setLocationRelativeTo(null);
+        saveDataWindow.setResizable(false);
+        Sound.expandSound();
+        int x = JOptionPane.showConfirmDialog(null, "Do you want to load previous\nsave data?", "Load?", 0, 2);
+        Sound.selectSound();
+        if(x == 0){
 
-        Sound.introSound();
+            saveDataWindow.setVisible(true);
+
+        }
+        else{
+
+            Sound.selectSound();
+            Sound.introSound();
+            frame.setVisible(true);
+
+        }
         inventoryWindow.add(inventory);
         inventoryWindow.setSize(600, 400);
         inventoryWindow.setLocationRelativeTo(null);
         inventoryWindow.setResizable(false);
+        coinFlipWindow.add(coinFlip);
+        coinFlipWindow.setSize(600, 400);
+        coinFlipWindow.setLocationRelativeTo(null);
+        coinFlipWindow.setResizable(false);
         prateekFightWindow.setSize(1280, 720);
         prateekFightWindow.setLocationRelativeTo(null);
         prateekFightWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -64,14 +102,6 @@ public class Main {
         lukeFightWindow.setBackground(Color.black);
         lukeFightWindow.add(lukeFight);
 
-        frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        frame.setSize(1280, 720);
-        frame.setBackground(Color.black);
-        frame.setLocationRelativeTo(null);
-
-        frame.add(menu);
-        frame.setResizable(false);
-        frame.setVisible(true);
         frame.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
@@ -128,7 +158,42 @@ public class Main {
                 super.keyPressed(e);
                 int key = e.getKeyCode();
                 // Keys for menu interaction: "E", "Space", "Enter/Return"
-                if(key == 32 || key == 10 || key == 69){
+                if(key == 27){
+
+                    Sound.altBackSound();
+                    frame1.setVisible(false);
+                    frame.setVisible(true);
+
+                }
+                else if(key == 76){
+
+                    Sound.errorSound();
+                    int x = JOptionPane.showConfirmDialog(null, "Are you sure you want to load?\nThis will overwrite unsaved data!", "Load?", 0, 2);
+                    if(x == 0){
+
+                        Sound.expandSound();
+                        SaveDataWindow.saveMode = false;
+                        saveDataWindow.setVisible(true);
+
+                    }
+                    Sound.selectSound();
+
+                }
+                else if(key == 83){
+
+                    Sound.errorSound();
+                    int x = JOptionPane.showConfirmDialog(null, "Are you sure you want to save?\nThis will overwrite previous save data!", "Save?", 0, 2);
+                    if(x == 0){
+
+                        Sound.expandSound();
+                        SaveDataWindow.saveMode = true;
+                        saveDataWindow.setVisible(true);
+
+                    }
+                    Sound.selectSound();
+
+                }
+                else if(key == 32 || key == 10 || key == 69){
 
                     Sound.selectSound();
                     player.setHP(100);
@@ -148,6 +213,7 @@ public class Main {
                         //Jack
                         games++;
                         currentOpponent = "Jack";
+                        CoinFlipWindow.value = 0;
                         frame1.setVisible(false);
                         jackFight = new JackFight();
                         jackFightWindow.setVisible(true);
@@ -175,7 +241,7 @@ public class Main {
 
                 }
                 //arrow keys -- Up/Down
-                if(key == 38 || key == 40 || key == 87 || key == 83){
+                if(key == 38 || key == 40){
                     Sound.optionSound();
                     if(opponentSelected == 0){
 
@@ -200,7 +266,7 @@ public class Main {
 
                 }
                 //arrow keys -- Left/Right
-                if(key == 37 || key == 39 || key == 65 || key == 68){
+                if(key == 37 || key == 39){
                     Sound.optionSound();
                     if(opponentSelected == 0){
 
@@ -423,6 +489,183 @@ public class Main {
                     else{
 
                         Sound.optionSound();
+
+                    }
+
+                }
+
+            }
+        });
+        coinFlipWindow.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                int key = e.getKeyCode();
+                // Keys for menu interaction: "E", "Space", "Enter/Return"
+                if(key == 32 || key == 10 || key == 69){
+
+                    if(coinFlipSelected == 0){
+
+                        CoinFlipWindow.value = 1;
+
+                    }
+                    else{
+
+                        CoinFlipWindow.value = 2;
+
+                    }
+                    coinFlipWindow.setVisible(false);
+                    Sound.altSelectSound();
+                    TextBox.select();
+
+                }
+                else if(key == 38 || key == 87 || key == 40 || key == 83){
+
+                    Sound.optionSound();
+                    if(coinFlipSelected == 0){
+
+                        coinFlipSelected = 1;
+
+                    }
+                    else{
+
+                        coinFlipSelected = 0;
+
+                    }
+
+                }
+
+            }
+        });
+
+        saveDataWindow.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                int key = e.getKeyCode();
+                //System.out.println(key);
+                // Keys for menu interaction: "E", "Space", "Enter/Return"
+                if(key == 32 || key == 10 || key == 69){
+
+                    Sound.selectSound();
+                    Sound.introSound();
+                    if(saveDataSelected == 0){
+
+                        if(SaveDataWindow.saveMode){
+
+                            try {
+                                Save.save("save1.txt");
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+                        }
+                        else{
+
+                            try {
+                                Load.load("save1.txt");
+                            } catch (FileNotFoundException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+                        }
+
+                    }
+                    else if(saveDataSelected == 1){
+
+                        if(SaveDataWindow.saveMode){
+
+                            try {
+                                Save.save("save2.txt");
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+                        }
+                        else{
+
+                            try {
+                                Load.load("save2.txt");
+                            } catch (FileNotFoundException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+                        }
+
+                    }
+                    else if(saveDataSelected == 2){
+
+                        if(SaveDataWindow.saveMode){
+
+                            try {
+                                Save.save("save3.txt");
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+                        }
+                        else{
+
+                            try {
+                                Load.load("save3.txt");
+                            } catch (FileNotFoundException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+                        }
+
+                    }
+                    Sound.backSound();
+                    Main.saveDataWindow.setVisible(false);
+                    Main.frame1.setVisible(false);
+                    Main.frame.setVisible(true);
+
+                }
+                //arrow keys -- Up/Down
+                if(key == 38 || key == 87){
+                    Sound.optionSound();
+                    if(saveDataSelected == 0){
+
+                        saveDataSelected = 3;
+
+                    }
+                    else if(saveDataSelected == 1){
+
+                        saveDataSelected--;
+
+                    }
+                    else if(saveDataSelected == 2){
+
+                        saveDataSelected--;
+
+                    }
+                    else{
+
+                        saveDataSelected--;
+
+                    }
+
+                }
+                else if(key == 40 || key == 83){
+                    Sound.optionSound();
+                    if(saveDataSelected == 0){
+
+                        saveDataSelected++;
+
+                    }
+                    else if(saveDataSelected == 1){
+
+                        saveDataSelected++;
+
+                    }
+                    else if(saveDataSelected == 2){
+
+                        saveDataSelected++;
+
+                    }
+                    else{
+
+                        saveDataSelected = 0;
 
                     }
 

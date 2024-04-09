@@ -28,58 +28,8 @@ public class Menu extends JPanel {
 
         if(Main.starting == false){
 
-            //Changing the background color for a cool effect
-            if(changeR && changeG){
+            changeColor(this);
 
-                if(colorR > 0 && colorG < 255){
-
-                    colorR--;
-                    colorG++;
-
-                }
-                else{
-
-                    changeR = false;
-                    changeB = true;
-
-                }
-
-            }
-            else if(changeG && changeB){
-
-                if(colorG > 0 && colorB < 255){
-
-                    colorG--;
-                    colorB++;
-
-                }
-                else{
-
-                    changeG = false;
-                    changeR = true;
-
-                }
-
-            }
-            else if(changeR && changeB){
-
-                if(colorB > 0 && colorR < 255){
-
-                    colorB--;
-                    colorR++;
-
-                }
-                else{
-
-                    changeB = false;
-                    changeG = true;
-
-                }
-
-            }
-
-
-            setBackground(new Color(colorR, colorG, colorB));
             g.setFont(defaultFont);
             g.setColor(Color.white);
             g.drawString(Main.version, 0, 685);
@@ -150,7 +100,7 @@ public class Menu extends JPanel {
     public static void quit(){
 
         Sound.expandSound();
-        int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?\nYou will lose all progress!");
+        int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to quit?\nYou will lose all unsaved progress!", "Quit?", 0, 2);
         Sound.backSound();
         if(choice == JOptionPane.YES_OPTION){
 
@@ -163,6 +113,61 @@ public class Menu extends JPanel {
 
         Main.frame.setVisible(false);
         Main.frame1.setVisible(true);
+
+    }
+
+    public static void changeColor(JPanel p){
+
+        if(Menu.changeR && Menu.changeG){
+
+            if(Menu.colorR > 0 && Menu.colorG < 155){
+
+                Menu.colorR--;
+                Menu.colorG++;
+
+            }
+            else{
+
+                Menu.changeR = false;
+                Menu.changeB = true;
+
+            }
+
+        }
+        else if(Menu.changeG && Menu.changeB){
+
+            if(Menu.colorG > 0 && Menu.colorB < 155){
+
+                Menu.colorG--;
+                Menu.colorB++;
+
+            }
+            else{
+
+                Menu.changeG = false;
+                Menu.changeR = true;
+
+            }
+
+        }
+        else if(Menu.changeR && Menu.changeB){
+
+            if(Menu.colorB > 0 && Menu.colorR < 155){
+
+                Menu.colorB--;
+                Menu.colorR++;
+
+            }
+            else{
+
+                Menu.changeB = false;
+                Menu.changeG = true;
+
+            }
+
+        }
+
+        p.setBackground(new Color(Menu.colorR, Menu.colorG, Menu.colorB));
 
     }
 
