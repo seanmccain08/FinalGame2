@@ -182,7 +182,7 @@ public class Main {
                 else if(key == 83){
 
                     Sound.errorSound();
-                    int x = JOptionPane.showConfirmDialog(null, "Are you sure you want to save?\nThis will overwrite previous save data!", "Save?", 0, 2);
+                    int x = JOptionPane.showConfirmDialog(null, "Are you sure you want to save?\nThis could overwrite previous save data!", "Save?", 0, 2);
                     if(x == 0){
 
                         Sound.expandSound();
