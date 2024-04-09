@@ -616,9 +616,10 @@ public class Main {
 
                     }
                     Sound.backSound();
-                    Main.saveDataWindow.setVisible(false);
-                    Main.frame1.setVisible(false);
-                    Main.frame.setVisible(true);
+                    saveDataWindow.setVisible(false);
+                    saveDataSelected = 0;
+                    frame1.setVisible(false);
+                    frame.setVisible(true);
 
                 }
                 //arrow keys -- Up/Down
