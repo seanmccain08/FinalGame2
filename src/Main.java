@@ -8,7 +8,8 @@ import java.io.IOException;
 public class Main {
 
 
-    public static String version = "Update 0.8";
+    public static boolean firstLoad = true;
+    public static String version = "Update 0.8.1";
     public static String currentOpponent = "";
     public static Player player = new Player();
     public static int games = 0;
@@ -618,8 +619,12 @@ public class Main {
                     Sound.backSound();
                     saveDataWindow.setVisible(false);
                     saveDataSelected = 0;
-                    frame1.setVisible(false);
-                    frame.setVisible(true);
+                    if(firstLoad){
+
+                        frame.setVisible(true);
+                        firstLoad = false;
+
+                    }
 
                 }
                 //arrow keys -- Up/Down

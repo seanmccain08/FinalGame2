@@ -113,7 +113,7 @@ public abstract class TextBox {
                         }
                         if (Main.player.getShields() == 0) {
 
-                            int damage = (int) (Math.random() * 10 + 1);
+                            int damage = (int) (Math.random() * 9 + 1);
                             Main.player.setHP(Main.player.getHP() - damage);
                             JOptionPane.showMessageDialog(null, "Prateek hit you for " + damage + " damage!");
 
@@ -190,7 +190,7 @@ public abstract class TextBox {
 
                             if (Main.player.getShields() == 0) {
 
-                                int damage = (int) (Math.random() * 10 + 1);
+                                int damage = (int) (Math.random() * 12 + 5);
                                 Main.player.setHP(Main.player.getHP() - damage);
                                 JOptionPane.showMessageDialog(null, "You lost the coin toss!\nJack hit you for " + damage + " damage!");
 
@@ -345,7 +345,7 @@ public abstract class TextBox {
 
             Sound.errorSound();
             Sound.expandSound();
-            int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit the battle?\nAll shields & bonuses will be lost!");
+            int choice = JOptionPane.showConfirmDialog(null, "Are you sure you want to exit the battle?\nAll shields & bonuses will be lost!", "Quit?",0, 2);
             Sound.backSound();
             if(choice == JOptionPane.YES_OPTION){
 

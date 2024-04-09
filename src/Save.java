@@ -8,9 +8,7 @@ public class Save {
     public static void save(String filepath) throws IOException {
 
         File save = new File(filepath);
-
         FileWriter fw = new FileWriter(save);
-
         PrintWriter pw = new PrintWriter(fw);
 
         pw.println(Main.games);
