@@ -326,7 +326,7 @@ public abstract class TextBox {
                     }
 
                 }
-                previousReason = RyanFight.rand;
+                previousReason = LukeFight.rand;
                 LukeFight.reason = true;
                 LukeFight.reasonDuration = 0;
 
