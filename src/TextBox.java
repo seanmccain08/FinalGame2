@@ -228,7 +228,7 @@ public abstract class TextBox {
             }
             else if(Main.currentOpponent == "Ryan"){
 
-
+                
 
             }
             else if(Main.currentOpponent == "Luke"){
