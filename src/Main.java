@@ -26,13 +26,15 @@ public class Main {
     public static JFrame frame1 = new JFrame("Opponent Select");
     public static Menu menu = new Menu();
 
-    //Inventory Window
+    //Misc Windows
     public static JFrame inventoryWindow = new JFrame("Inventory");
     public static JFrame coinFlipWindow = new JFrame("Flip a coin");
     public static JFrame saveDataWindow = new JFrame("Load Game");
+    public static JFrame timerDamageWindow = new JFrame("Spam");
     public static InventoryWindow inventory = new InventoryWindow();
     public static CoinFlipWindow coinFlip = new CoinFlipWindow();
     public static SaveDataWindow saveData = new SaveDataWindow();
+    public static TimerDamageWindow timerDamage = new TimerDamageWindow();
 
     //Game Windows
     public static JFrame prateekFightWindow = new JFrame("Battle Simulator - Prateek");
@@ -78,6 +80,10 @@ public class Main {
         coinFlipWindow.setSize(600, 400);
         coinFlipWindow.setLocationRelativeTo(null);
         coinFlipWindow.setResizable(false);
+        timerDamageWindow.add(timerDamage);
+        timerDamageWindow.setSize(600, 400);
+        timerDamageWindow.setLocationRelativeTo(null);
+        timerDamageWindow.setResizable(false);
         prateekFightWindow.setSize(1280, 720);
         prateekFightWindow.setLocationRelativeTo(null);
         prateekFightWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -289,6 +295,20 @@ public class Main {
                         opponentSelected = 1;
 
                     }
+
+                }
+
+            }
+        });
+        timerDamageWindow.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                int key = e.getKeyCode();
+                // Keys for menu interaction: "E", "Space", "Enter/Return"
+                if(key == 32 || key == 10 || key == 69){
+
+                    TimerDamageWindow.score+=2;
 
                 }
 

@@ -228,7 +228,7 @@ public abstract class TextBox {
             }
             else if(Main.currentOpponent == "Ryan"){
 
-                
+                Main.timerDamageWindow.setVisible(true);
 
             }
             else if(Main.currentOpponent == "Luke"){
