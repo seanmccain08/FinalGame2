@@ -306,9 +306,20 @@ public class Main {
                 super.keyPressed(e);
                 int key = e.getKeyCode();
                 // Keys for menu interaction: "E", "Space", "Enter/Return"
-                if(key == 32 || key == 10 || key == 69){
+                if(key == 32){
 
-                    TimerDamageWindow.score+=2;
+                    if(TimerDamageWindow.phase == 0){
+
+                        TimerDamageWindow.score++;
+
+                    }
+                    else{
+
+                        int x = (int)(TimerDamageWindow.scoreMultiplier*10);
+                        x++;
+                        TimerDamageWindow.scoreMultiplier = ((double)x)/10.0;
+
+                    }
 
                 }
 

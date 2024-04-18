@@ -230,7 +230,8 @@ public abstract class TextBox {
 
                 if(TimerDamageWindow.first){
 
-                    JOptionPane.showMessageDialog(null, "message (TBD)");
+                    JOptionPane.showMessageDialog(null, "When you press OK, you will have to\nspam the Space Bar to increase the\namount of damage you deal\n(given a small amount of time).\nThen you will spam for the multiplier\nwhich starts at 0.\n\nThis message will only show once");
+                    TimerDamageWindow.first = false;
 
                 }
                 Main.timerDamageWindow.setVisible(true);
