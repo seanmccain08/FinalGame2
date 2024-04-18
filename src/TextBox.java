@@ -228,6 +228,11 @@ public abstract class TextBox {
             }
             else if(Main.currentOpponent == "Ryan"){
 
+                if(TimerDamageWindow.first){
+
+                    JOptionPane.showMessageDialog(null, "message (TBD)");
+
+                }
                 Main.timerDamageWindow.setVisible(true);
 
             }

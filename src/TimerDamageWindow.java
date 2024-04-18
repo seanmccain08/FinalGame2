@@ -13,6 +13,8 @@ public class TimerDamageWindow extends JPanel {
     static Font boldFont = new Font("SansSerif", Font.BOLD, 30);
     static Font bodyFont = new Font("SansSerif", Font.PLAIN, 15);
 
+    public static int phase = 0;
+    public static boolean first = true;
     static int frame = 50;
     public static int score = 0;
 
@@ -31,6 +33,9 @@ public class TimerDamageWindow extends JPanel {
 
         g.setColor(Color.red);
         g.fillRect(0, 0, 600, 50);
+        g.setColor(Color.green);
+        int timerBarSizeX = frame*12;
+        g.fillRect(0, 0, timerBarSizeX, 50);
 
         try {
             Thread.sleep(1);
