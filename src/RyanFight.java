@@ -14,7 +14,7 @@ public class RyanFight extends JPanel {
     static Font playerHPFont = new Font("SansSerif", Font.BOLD, 10);
     static Font numShieldFont = new Font("SansSerif", Font.PLAIN, 40);
     String[] phrases = {"Alriiiiiiiight", "Bad Aim", "Bro what are you doing"};
-    static int ryanHP;
+    static double ryanHP;
     public RyanFight(){
 
         setBackground(Color.gray);
@@ -45,7 +45,7 @@ public class RyanFight extends JPanel {
         g.fillRect(340, 20, 600, 50);
         g.fillRect(0, 680, 1280, 20);
         g.setColor(Color.green);
-        g.fillRect(340, 20, ryanHP*2, 50);
+        g.fillRect(340, 20, (int)ryanHP*2, 50);
         int playerHealth = (int)(Main.player.getHP()*12.8);
         if(Main.player.getHP() <= 20){
 

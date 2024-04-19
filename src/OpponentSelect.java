@@ -26,7 +26,7 @@ public class OpponentSelect extends JPanel {
         g.setFont(bodyFont);
         g.drawString("Press ESC to return to the Main Menu", 5, 20);
         g.drawString("Press S to save your game", 5, 40);
-        g.drawString("Press L to load sava data", 5, 60);
+        g.drawString("Press L to load save data", 5, 60);
         g.setFont(textBoxFont);
         g.drawString("Choose your opponent", 350, 50);
         g.setFont(mainFont);

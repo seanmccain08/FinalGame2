@@ -12,6 +12,7 @@ public class TimerDamageWindow extends JPanel {
     static Font mainFont = new Font("SansSerif", Font.PLAIN, 30);
     static Font boldFont = new Font("SansSerif", Font.BOLD, 50);
 
+    public static int damage0 = (int)(Math.random()*10+1);
     static boolean increase = false;
     static int fontSize = 50;
     static int posX0 = 175;
@@ -20,7 +21,9 @@ public class TimerDamageWindow extends JPanel {
     public static boolean first = true;
     static int frame = 20;
     public static int score = 0;
-    public static double scoreMultiplier = 0.0;
+    public static double scoreMultiplier = 0.3;
+
+    public static double damage = 0.0;
 
     @Override
     public void paintComponent(Graphics g){
@@ -35,13 +38,26 @@ public class TimerDamageWindow extends JPanel {
                 frame = 30;
 
             }
+            else if(phase == 1){
+
+                frame = 60;
+                phase++;
+
+            }
             else{
 
-                Main.timerDamageWindow.setVisible(false);
+                damage = (int)(score * scoreMultiplier * 100);
+                damage /= 100;
+
+                Main.player.setHP(Main.player.getHP()-damage0);
+                RyanFight.ryanHP-=damage;
+
                 score = 0;
                 frame = 30;
                 phase = 0;
-                scoreMultiplier = 0.0;
+                scoreMultiplier = 0.3;
+
+                Main.timerDamageWindow.setVisible(false);
 
             }
 
@@ -87,7 +103,7 @@ public class TimerDamageWindow extends JPanel {
             }
 
         }
-        else{
+        else if(phase == 1){
 
             g.drawString(score+" Damage * "+scoreMultiplier, posX1, 200);
             if(increase){
@@ -114,6 +130,15 @@ public class TimerDamageWindow extends JPanel {
                 }
 
             }
+
+        }
+        else{
+
+            g.setColor(Color.white);
+            boldFont = new Font("SansSerif", Font.BOLD, 30);
+            g.setFont(boldFont);
+            g.drawString("You hit Ryan for "+damage+" damage!", 100, 75);
+            g.drawString("He hit you back for "+damage0+" damage!", 100, 175);
 
         }
 
