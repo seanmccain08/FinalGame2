@@ -356,6 +356,7 @@ public abstract class TextBox {
             if(choice == JOptionPane.YES_OPTION){
 
                 Sound.introSound();
+                TimerDamageWindow.first = true;
                 Main.games--;
                 Menu.logoChoice = (int)(Math.random()*6+1);
                 Main.gameSelected = 0;
