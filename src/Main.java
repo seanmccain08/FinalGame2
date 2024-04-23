@@ -21,16 +21,19 @@ public class Main {
     public static int inventorySelected = 0;
     public static int opponentSelected = 0;
     public static int gameSelected = 0;
+    public static int settingsSelected = 0;
     public static boolean starting = false;
     public static JFrame frame = new JFrame("Battle Simulator - Menu");
     public static JFrame frame1 = new JFrame("Opponent Select");
     public static Menu menu = new Menu();
 
     //Misc Windows
+    public static JFrame settingsWindow = new JFrame("Settings");
     public static JFrame inventoryWindow = new JFrame("Inventory");
     public static JFrame coinFlipWindow = new JFrame("Flip a coin");
     public static JFrame saveDataWindow = new JFrame("Load Game");
     public static JFrame timerDamageWindow = new JFrame("Spam");
+    public static SettingsWindow settings = new SettingsWindow();
     public static InventoryWindow inventory = new InventoryWindow();
     public static CoinFlipWindow coinFlip = new CoinFlipWindow();
     public static SaveDataWindow saveData = new SaveDataWindow();
@@ -76,6 +79,10 @@ public class Main {
         inventoryWindow.setSize(600, 400);
         inventoryWindow.setLocationRelativeTo(null);
         inventoryWindow.setResizable(false);
+        settingsWindow.add(inventory);
+        settingsWindow.setSize(600, 400);
+        settingsWindow.setLocationRelativeTo(null);
+        settingsWindow.setResizable(false);
         coinFlipWindow.add(coinFlip);
         coinFlipWindow.setSize(600, 400);
         coinFlipWindow.setLocationRelativeTo(null);
