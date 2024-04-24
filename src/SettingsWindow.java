@@ -28,17 +28,14 @@ public class SettingsWindow extends JPanel {
             g.setColor(Color.white);
             g.setFont(mainFont);
             g.drawString("Sound", 50, 175);
-            g.drawString("Wipe Save Data...", 50, 225);
-            g.drawString("Cancel", 50, 310);
+            g.drawString("Wipe Save Data", 50, 225);
+            g.drawString("Back", 50, 310);
 
             g.setFont(boldFont);
-            g.drawString("Save I", 330, 65);
+            g.drawString("Background", 330, 65);
             g.setFont(bodyFont);
-            try {
-                Load.drawInfo(g, "save1.txt");
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+            g.drawString("Press enter to change background.", 330, 150);
+
 
         }
         if(Main.saveDataSelected == 1){
@@ -57,11 +54,7 @@ public class SettingsWindow extends JPanel {
             g.setFont(boldFont);
             g.drawString("Save II", 330, 65);
             g.setFont(bodyFont);
-            try {
-                Load.drawInfo(g, "save2.txt");
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+
 
         }
         if(Main.saveDataSelected == 2){
@@ -80,11 +73,7 @@ public class SettingsWindow extends JPanel {
             g.setFont(boldFont);
             g.drawString("Save III", 330, 65);
             g.setFont(bodyFont);
-            try {
-                Load.drawInfo(g, "save3.txt");
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
+
 
         }
         if(Main.saveDataSelected == 3){

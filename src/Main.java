@@ -79,7 +79,7 @@ public class Main {
         inventoryWindow.setSize(600, 400);
         inventoryWindow.setLocationRelativeTo(null);
         inventoryWindow.setResizable(false);
-        settingsWindow.add(inventory);
+        settingsWindow.add(settings);
         settingsWindow.setSize(600, 400);
         settingsWindow.setLocationRelativeTo(null);
         settingsWindow.setResizable(false);
@@ -130,6 +130,11 @@ public class Main {
                         starting = true;
 
                     }
+                    else if(menuSelected == 1){
+
+                        settingsWindow.setVisible(true);
+
+                    }
                     else{
 
                         Menu.quit();
@@ -139,7 +144,7 @@ public class Main {
                 }
 
                 //Up & Down arrow
-                if(key == 38 || key == 40 || key == 87 || key == 83){
+                if(key == 40 || key == 83){
 
                     Sound.optionSound();
                     if(menuSelected == 0){
@@ -147,9 +152,34 @@ public class Main {
                         menuSelected = 1;
 
                     }
+                    else if(menuSelected == 1){
+
+                        menuSelected = 2;
+
+                    }
                     else{
 
                         menuSelected = 0;
+
+                    }
+
+                }
+                else if(key == 38 || key == 87){
+
+                    Sound.optionSound();
+                    if(menuSelected == 0){
+
+                        menuSelected = 2;
+
+                    }
+                    else if(menuSelected == 1){
+
+                        menuSelected = 0;
+
+                    }
+                    else{
+
+                        menuSelected = 1;
 
                     }
 

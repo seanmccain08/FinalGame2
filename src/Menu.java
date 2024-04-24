@@ -64,18 +64,32 @@ public class Menu extends JPanel {
 
                 g.setFont(selectedFont);
                 g.setColor(Color.yellow);
-                g.drawString("Start", 575, 350);
+                g.drawString("Start", 570, 350);
                 g.setColor(Color.white);
                 g.setFont(optionFont);
-                g.drawString("Quit", 575, 425);
+                g.drawString("Settings", 535, 425);
+                g.drawString("Quit", 575, 500);
+
+
+            }
+            else if(Main.menuSelected == 1){
+
+                g.drawString("Start", 575, 350);
+                g.setFont(selectedFont);
+                g.setColor(Color.yellow);
+                g.drawString("Settings", 530, 425);
+                g.setColor(Color.white);
+                g.setFont(optionFont);
+                g.drawString("Quit", 575, 500);
 
             }
             else{
 
                 g.drawString("Start", 575, 350);
+                g.drawString("Settings", 535, 425);
                 g.setFont(selectedFont);
                 g.setColor(Color.yellow);
-                g.drawString("Quit", 575, 425);
+                g.drawString("Quit", 570, 500);
                 g.setColor(Color.white);
                 g.setFont(optionFont);
 
