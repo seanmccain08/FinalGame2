@@ -4,7 +4,11 @@ import java.io.FileNotFoundException;
 
 public class SettingsWindow extends JPanel {
 
-    public SettingsWindow(){}
+    public SettingsWindow(){
+
+        setBackground(Color.gray);
+
+    }
 
     static Font mainFont = new Font("SansSerif", Font.PLAIN, 30);
     static Font boldFont = new Font("SansSerif", Font.BOLD, 30);
@@ -14,7 +18,55 @@ public class SettingsWindow extends JPanel {
     public void paintComponent(Graphics g){
 
 
-        Menu.changeColor(this);
+        if(Menu.changeR && Menu.changeG){
+
+            if(Menu.colorR > 0 && Menu.colorG < 155){
+
+                Menu.colorR--;
+                Menu.colorG++;
+
+            }
+            else{
+
+                Menu.changeR = false;
+                Menu.changeB = true;
+
+            }
+
+        }
+        else if(Menu.changeG && Menu.changeB){
+
+            if(Menu.colorG > 0 && Menu.colorB < 155){
+
+                Menu.colorG--;
+                Menu.colorB++;
+
+            }
+            else{
+
+                Menu.changeG = false;
+                Menu.changeR = true;
+
+            }
+
+        }
+        else if(Menu.changeR && Menu.changeB){
+
+            if(Menu.colorB > 0 && Menu.colorR < 155){
+
+                Menu.colorB--;
+                Menu.colorR++;
+
+            }
+            else{
+
+                Menu.changeB = false;
+                Menu.changeG = true;
+
+            }
+
+        }
+        setBackground(new Color(Menu.colorR, Menu.colorG, Menu.colorB));
 
         g.setColor(Color.black);
         g.fillRect(300, 0, 300, 400);
@@ -34,65 +86,91 @@ public class SettingsWindow extends JPanel {
             g.setFont(boldFont);
             g.drawString("Background", 330, 65);
             g.setFont(bodyFont);
-            g.drawString("Press enter to change background.", 330, 150);
+            g.drawString("Press enter to change the", 330, 150);
+            g.drawString("background color.", 330, 170);
+            g.drawString("(Won't affect this window)", 330, 190);
+            if(Settings.getBgColor() == 0){
+
+                g.drawString("Current Setting: Colored", 330, 320);
+
+            }
+            else{
+
+                g.drawString("Current Setting: Gray", 330, 320);
+
+            }
 
 
         }
-        if(Main.saveDataSelected == 1){
+        if(Main.settingsSelected == 1){
 
-            g.setFont(mainFont);
             g.setColor(Color.white);
-            g.drawString("Save I", 50, 125);
+            g.setFont(mainFont);
+            g.drawString("Background", 50, 125);
             g.setColor(Color.yellow);
             g.setFont(boldFont);
-            g.drawString("Save II", 50, 175);
+            g.drawString("Sound", 50, 175);
             g.setColor(Color.white);
             g.setFont(mainFont);
-            g.drawString("Save III", 50, 225);
-            g.drawString("Cancel", 50, 310);
+            g.drawString("Wipe Save Data", 50, 225);
+            g.drawString("Back", 50, 310);
 
             g.setFont(boldFont);
-            g.drawString("Save II", 330, 65);
+            g.drawString("Sound", 330, 65);
             g.setFont(bodyFont);
+            g.drawString("Press enter to mute/unmute", 330, 150);
+            g.drawString("sound effects.", 330, 170);
+            if(Settings.getSoundSettings() == 0){
+
+                g.drawString("Current Setting: Unmuted", 330, 320);
+
+            }
+            else{
+
+                g.drawString("Current Setting: Muted", 330, 320);
+
+            }
 
 
         }
-        if(Main.saveDataSelected == 2){
+        if(Main.settingsSelected == 2){
 
-            g.setFont(mainFont);
             g.setColor(Color.white);
-            g.drawString("Save I", 50, 125);
-            g.drawString("Save II", 50, 175);
+            g.setFont(mainFont);
+            g.drawString("Background", 50, 125);
+            g.drawString("Sound", 50, 175);
             g.setColor(Color.yellow);
             g.setFont(boldFont);
-            g.drawString("Save III", 50, 225);
+            g.drawString("Wipe Save Data", 50, 225);
             g.setColor(Color.white);
             g.setFont(mainFont);
-            g.drawString("Cancel", 50, 310);
+            g.drawString("Back", 50, 310);
 
             g.setFont(boldFont);
-            g.drawString("Save III", 330, 65);
+            g.drawString("Wipe Save Data", 330, 65);
             g.setFont(bodyFont);
+            g.drawString("Press enter to open save menu", 330, 150);
+            g.drawString("and choose a file to wipe.", 330, 170);
 
 
         }
-        if(Main.saveDataSelected == 3){
+        if(Main.settingsSelected == 3){
 
-            g.setFont(mainFont);
             g.setColor(Color.white);
-            g.drawString("Save I", 50, 125);
-            g.drawString("Save II", 50, 175);
-            g.drawString("Save III", 50, 225);
+            g.setFont(mainFont);
+            g.drawString("Background", 50, 125);
+            g.drawString("Sound", 50, 175);
+            g.drawString("Wipe Save Data", 50, 225);
             g.setColor(Color.yellow);
             g.setFont(boldFont);
-            g.drawString("Cancel", 50, 310);
+            g.drawString("Back", 50, 310);
+
             g.setColor(Color.white);
             g.setFont(mainFont);
-
             g.setFont(boldFont);
-            g.drawString("Cancel", 330, 65);
+            g.drawString("Back", 330, 65);
             g.setFont(bodyFont);
-            g.drawString("Cancel save data action?", 330, 120);
+            g.drawString("Exit the settings menu?", 330, 150);
 
         }
 

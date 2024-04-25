@@ -29,7 +29,11 @@ public class TimerDamageWindow extends JPanel {
     @Override
     public void paintComponent(Graphics g){
 
-        Menu.changeColor(this);
+        if(Settings.getSoundSettings() != 1){
+
+            Menu.changeColor(this);
+
+        }
 
         if(frame == 0){
 

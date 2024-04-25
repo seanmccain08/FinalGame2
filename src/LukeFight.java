@@ -31,6 +31,8 @@ public class LukeFight extends JPanel {
     @Override
     public void paintComponent(Graphics g){
 
+        Menu.changeColor(this);
+
         g.setColor(Color.black);
         ImageIcon shieldIcon = new ImageIcon("Images/shield.png");
         ImageIcon starIcon = new ImageIcon("Images/star.png");

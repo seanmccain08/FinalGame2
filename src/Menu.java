@@ -132,56 +132,65 @@ public class Menu extends JPanel {
 
     public static void changeColor(JPanel p){
 
-        if(Menu.changeR && Menu.changeG){
+        if(Settings.getBgColor() == 0){
 
-            if(Menu.colorR > 0 && Menu.colorG < 155){
+            if(Menu.changeR && Menu.changeG){
 
-                Menu.colorR--;
-                Menu.colorG++;
+                if(Menu.colorR > 0 && Menu.colorG < 155){
+
+                    Menu.colorR--;
+                    Menu.colorG++;
+
+                }
+                else{
+
+                    Menu.changeR = false;
+                    Menu.changeB = true;
+
+                }
 
             }
-            else{
+            else if(Menu.changeG && Menu.changeB){
 
-                Menu.changeR = false;
-                Menu.changeB = true;
+                if(Menu.colorG > 0 && Menu.colorB < 155){
+
+                    Menu.colorG--;
+                    Menu.colorB++;
+
+                }
+                else{
+
+                    Menu.changeG = false;
+                    Menu.changeR = true;
+
+                }
 
             }
+            else if(Menu.changeR && Menu.changeB){
+
+                if(Menu.colorB > 0 && Menu.colorR < 155){
+
+                    Menu.colorB--;
+                    Menu.colorR++;
+
+                }
+                else{
+
+                    Menu.changeB = false;
+                    Menu.changeG = true;
+
+                }
+
+            }
+            p.setBackground(new Color(Menu.colorR, Menu.colorG, Menu.colorB));
+
 
         }
-        else if(Menu.changeG && Menu.changeB){
+        else{
 
-            if(Menu.colorG > 0 && Menu.colorB < 155){
-
-                Menu.colorG--;
-                Menu.colorB++;
-
-            }
-            else{
-
-                Menu.changeG = false;
-                Menu.changeR = true;
-
-            }
+            p.setBackground(Color.gray);
 
         }
-        else if(Menu.changeR && Menu.changeB){
-
-            if(Menu.colorB > 0 && Menu.colorR < 155){
-
-                Menu.colorB--;
-                Menu.colorR++;
-
-            }
-            else{
-
-                Menu.changeB = false;
-                Menu.changeG = true;
-
-            }
-
-        }
-
-        p.setBackground(new Color(Menu.colorR, Menu.colorG, Menu.colorB));
 
     }
 

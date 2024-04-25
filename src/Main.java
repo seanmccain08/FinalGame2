@@ -132,7 +132,9 @@ public class Main {
                     }
                     else if(menuSelected == 1){
 
+                        Main.settingsSelected = 0;
                         settingsWindow.setVisible(true);
+                        Sound.expandSound();
 
                     }
                     else{
@@ -601,6 +603,91 @@ public class Main {
                         coinFlipSelected = 0;
 
                     }
+
+                }
+
+            }
+        });
+        settingsWindow.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                super.keyPressed(e);
+                int key = e.getKeyCode();
+                //System.out.println(key);
+                // Keys for menu interaction: "E", "Space", "Enter/Return"
+                if(key == 32 || key == 10 || key == 69){
+
+                    if(settingsSelected == 0){
+
+                        Settings.toggleBGColor();
+
+                    }
+                    else if(settingsSelected == 1){
+
+                        Settings.toggleSoundSettings();
+
+                    }
+                    else if(settingsSelected == 2){
+
+
+
+                    }
+                    else{
+
+                        Sound.errorSound();
+                        Sound.backSound();
+                        settingsWindow.setVisible(false);
+
+                    }
+
+                }
+                //arrow keys -- Up/Down
+                if(key == 38 || key == 87){
+                    if(settingsSelected == 0){
+
+                        settingsSelected = 3;
+
+                    }
+                    else if(settingsSelected == 1){
+
+                        settingsSelected--;
+
+                    }
+                    else if(settingsSelected == 2){
+
+                        settingsSelected--;
+
+                    }
+                    else if(settingsSelected == 3){
+
+                        settingsSelected--;
+
+                    }
+                    Sound.optionSound();
+
+                }
+                else if(key == 40 || key == 83){
+                    if(settingsSelected == 0){
+
+                        settingsSelected++;
+
+                    }
+                    else if(settingsSelected == 1){
+
+                        settingsSelected++;
+
+                    }
+                    else if(settingsSelected == 2){
+
+                        settingsSelected++;
+
+                    }
+                    else if(settingsSelected == 3){
+
+                        settingsSelected = 0;
+
+                    }
+                    Sound.optionSound();
 
                 }
 

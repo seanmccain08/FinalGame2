@@ -102,27 +102,31 @@ public class Sound {
     }
     public static void playSound(String location){
 
-        try {
-            File musicPath = new File(location);
+        if(Settings.getSoundSettings() == 0){
 
-            if(musicPath.exists()){
+            try {
+                File musicPath = new File(location);
 
-                AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
-                Clip clip = AudioSystem.getClip();
-                clip.open(audioInput);
-                clip.start();
+                if(musicPath.exists()){
+
+                    AudioInputStream audioInput = AudioSystem.getAudioInputStream(musicPath);
+                    Clip clip = AudioSystem.getClip();
+                    clip.open(audioInput);
+                    clip.start();
+
+                }
+                else{
+
+                    System.out.println("Can't find file");
+
+                }
 
             }
-            else{
+            catch (Exception e){
 
-                System.out.println("Can't find file");
+                System.out.println(e);
 
             }
-
-        }
-        catch (Exception e){
-
-            System.out.println(e);
 
         }
 

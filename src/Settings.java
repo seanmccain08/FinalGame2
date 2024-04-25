@@ -1,31 +1,43 @@
 public class Settings {
 
-    private int bgColor;
-    private int soundSettings;
-    public Settings(){
-
-        bgColor = 0;
-        soundSettings = 0;
-
-    }
-    public int getBgColor(){
+    static int bgColor = 0;
+    static int soundSettings = 0;
+    public static int getBgColor(){
 
         return bgColor;
 
     }
-    public void setBgColor(int x){
+    public static void toggleBGColor(){
 
-        bgColor = x;
+        if(bgColor == 0){
+
+            bgColor = 1;
+
+        }
+        else{
+
+            bgColor = 0;
+
+        }
 
     }
-    public int getSoundSettings(){
+    public static int getSoundSettings(){
 
         return soundSettings;
 
     }
-    public void setSoundSettings(int x){
+    public static void toggleSoundSettings(){
 
-        soundSettings = x;
+        if(soundSettings == 0){
+
+            soundSettings = 1;
+
+        }
+        else{
+
+            soundSettings = 0;
+
+        }
 
     }
 
