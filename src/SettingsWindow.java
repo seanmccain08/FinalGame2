@@ -88,7 +88,10 @@ public class SettingsWindow extends JPanel {
             g.setFont(bodyFont);
             g.drawString("Press enter to change the", 330, 150);
             g.drawString("background color.", 330, 170);
-            g.drawString("(Won't affect this window)", 330, 190);
+            g.drawString("WARNING: May cause settings", 330, 200);
+            g.drawString("menu to freeze up if set to", 330, 220);
+            g.drawString("gray.", 330, 240);
+            g.drawString("(Won't affect this window)", 330, 340);
             if(Settings.getBgColor() == 0){
 
                 g.drawString("Current Setting: Colored", 330, 320);

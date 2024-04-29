@@ -6,7 +6,7 @@ public class SaveDataWindow extends JPanel{
 
     public SaveDataWindow(){}
 
-    public static boolean saveMode = false;
+    public static int saveDataMode = 1;
     static Font mainFont = new Font("SansSerif", Font.PLAIN, 30);
     static Font boldFont = new Font("SansSerif", Font.BOLD, 30);
     static Font bodyFont = new Font("SansSerif", Font.PLAIN, 15);
@@ -14,14 +14,20 @@ public class SaveDataWindow extends JPanel{
     @Override
     public void paintComponent(Graphics g){
 
-        if(saveMode){
+        if(saveDataMode == 0){
 
             Main.saveDataWindow.setTitle("Save Game");
 
         }
-        else{
+
+        else if(saveDataMode == 1){
 
             Main.saveDataWindow.setTitle("Load Game");
+
+        }
+        else{
+
+            Main.saveDataWindow.setTitle("Wipe Saves");
 
         }
 

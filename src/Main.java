@@ -9,7 +9,7 @@ public class Main {
 
 
     public static boolean firstLoad = true;
-    public static String version = "Update 0.9";
+    public static String version = "Update 0.9.3";
     public static String currentOpponent = "";
     public static Player player = new Player();
     public static int games = 0;
@@ -218,7 +218,7 @@ public class Main {
                     if(x == 0){
 
                         Sound.expandSound();
-                        SaveDataWindow.saveMode = false;
+                        SaveDataWindow.saveDataMode = 1;
                         saveDataWindow.setVisible(true);
 
                     }
@@ -232,7 +232,7 @@ public class Main {
                     if(x == 0){
 
                         Sound.expandSound();
-                        SaveDataWindow.saveMode = true;
+                        SaveDataWindow.saveDataMode = 0;
                         saveDataWindow.setVisible(true);
 
                     }
@@ -620,6 +620,8 @@ public class Main {
                     if(settingsSelected == 0){
 
                         Settings.toggleBGColor();
+                        settingsWindow.setVisible(false);
+                        settingsWindow.setVisible(true);
 
                     }
                     else if(settingsSelected == 1){
@@ -629,7 +631,13 @@ public class Main {
                     }
                     else if(settingsSelected == 2){
 
+                        int x = JOptionPane.showConfirmDialog(null, "Are you sure you want to wipe a save?\nYou cannot undo this action!", "Wipe save data?", 0, 2);
+                        if(x == 0){
 
+                            SaveDataWindow.saveDataMode = 2;
+                            saveDataWindow.setVisible(true);
+
+                        }
 
                     }
                     else{
@@ -707,7 +715,7 @@ public class Main {
                     Sound.introSound();
                     if(saveDataSelected == 0){
 
-                        if(SaveDataWindow.saveMode){
+                        if(SaveDataWindow.saveDataMode == 0){
 
                             try {
                                 Save.save("save1.txt");
@@ -716,7 +724,7 @@ public class Main {
                             }
 
                         }
-                        else{
+                        else if(SaveDataWindow.saveDataMode == 1){
 
                             try {
                                 Load.load("save1.txt");
@@ -725,11 +733,20 @@ public class Main {
                             }
 
                         }
+                        else{
+
+                            try {
+                                Wipe.wipe("save1.txt");
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+                        }
 
                     }
                     else if(saveDataSelected == 1){
 
-                        if(SaveDataWindow.saveMode){
+                        if(SaveDataWindow.saveDataMode == 0){
 
                             try {
                                 Save.save("save2.txt");
@@ -738,7 +755,7 @@ public class Main {
                             }
 
                         }
-                        else{
+                        else if(SaveDataWindow.saveDataMode == 1){
 
                             try {
                                 Load.load("save2.txt");
@@ -747,11 +764,20 @@ public class Main {
                             }
 
                         }
+                        else{
+
+                            try {
+                                Wipe.wipe("save2.txt");
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+                        }
 
                     }
                     else if(saveDataSelected == 2){
 
-                        if(SaveDataWindow.saveMode){
+                        if(SaveDataWindow.saveDataMode == 0){
 
                             try {
                                 Save.save("save3.txt");
@@ -760,11 +786,20 @@ public class Main {
                             }
 
                         }
-                        else{
+                        else if(SaveDataWindow.saveDataMode == 1){
 
                             try {
                                 Load.load("save3.txt");
                             } catch (FileNotFoundException ex) {
+                                throw new RuntimeException(ex);
+                            }
+
+                        }
+                        else{
+
+                            try {
+                                Wipe.wipe("save3.txt");
+                            } catch (IOException ex) {
                                 throw new RuntimeException(ex);
                             }
 

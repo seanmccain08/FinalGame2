@@ -13,7 +13,7 @@ public class TimerDamageWindow extends JPanel {
     static Font boldFont = new Font("SansSerif", Font.BOLD, 50);
 
     static boolean shield = false;
-    public static int damage0 = (int)(Math.random()*10+5);
+    public static int damage0 = (int)(Math.random()*6+4);
     static boolean increase = false;
     static int fontSize = 50;
     static int posX0 = 175;
@@ -100,7 +100,7 @@ public class TimerDamageWindow extends JPanel {
                 frame = 30;
                 phase = 0;
                 scoreMultiplier = 1;
-                damage0 = (int)(Math.random()*10+5);
+                damage0 = (int)(Math.random()*6+4);
                 if(Main.player.getShields() > 0){
 
                     Main.player.setShields(Main.player.getShields()-1);
