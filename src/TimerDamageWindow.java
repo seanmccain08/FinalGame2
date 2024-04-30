@@ -6,7 +6,6 @@ public class TimerDamageWindow extends JPanel {
     public TimerDamageWindow(){
 
 
-
     }
 
     static Font mainFont = new Font("SansSerif", Font.PLAIN, 30);
@@ -20,7 +19,7 @@ public class TimerDamageWindow extends JPanel {
     static int posX1 = 160;
     public static int phase = 0;
     public static boolean first = true;
-    static int frame = 20;
+    static int frame = 30;
     public static int score = 0;
     public static double scoreMultiplier = 1;
 
@@ -29,9 +28,14 @@ public class TimerDamageWindow extends JPanel {
     @Override
     public void paintComponent(Graphics g){
 
-        if(Settings.getSoundSettings() != 1){
+        if(Settings.getBgColor() != 1){
 
             Menu.changeColor(this);
+
+        }
+        else{
+
+            setBackground(Color.gray);
 
         }
 

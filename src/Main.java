@@ -33,11 +33,13 @@ public class Main {
     public static JFrame coinFlipWindow = new JFrame("Flip a coin");
     public static JFrame saveDataWindow = new JFrame("Load Game");
     public static JFrame timerDamageWindow = new JFrame("Spam");
+    public static JFrame burgerWindow = new JFrame("Spam");
     public static SettingsWindow settings = new SettingsWindow();
     public static InventoryWindow inventory = new InventoryWindow();
     public static CoinFlipWindow coinFlip = new CoinFlipWindow();
     public static SaveDataWindow saveData = new SaveDataWindow();
     public static TimerDamageWindow timerDamage = new TimerDamageWindow();
+    public static BurgerWindow burger = new BurgerWindow();
 
     //Game Windows
     public static JFrame prateekFightWindow = new JFrame("Battle Simulator - Prateek");
@@ -91,6 +93,10 @@ public class Main {
         timerDamageWindow.setSize(600, 400);
         timerDamageWindow.setLocationRelativeTo(null);
         timerDamageWindow.setResizable(false);
+        burgerWindow.add(burger);
+        burgerWindow.setSize(600, 400);
+        burgerWindow.setLocationRelativeTo(null);
+        burgerWindow.setResizable(false);
         prateekFightWindow.setSize(1280, 720);
         prateekFightWindow.setLocationRelativeTo(null);
         prateekFightWindow.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -115,6 +121,8 @@ public class Main {
         lukeFightWindow.setResizable(false);
         lukeFightWindow.setBackground(Color.black);
         lukeFightWindow.add(lukeFight);
+
+        burgerWindow.setVisible(true);
 
         frame.addKeyListener(new KeyAdapter() {
             @Override
@@ -341,8 +349,8 @@ public class Main {
         });
         timerDamageWindow.addKeyListener(new KeyAdapter() {
             @Override
-            public void keyPressed(KeyEvent e) {
-                super.keyPressed(e);
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
                 int key = e.getKeyCode();
                 // Keys for menu interaction: "E", "Space", "Enter/Return"
                 if(key == 32){
@@ -364,7 +372,20 @@ public class Main {
 
             }
         });
+        burgerWindow.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyReleased(KeyEvent e) {
+                super.keyReleased(e);
+                int key = e.getKeyCode();
+                // Keys for menu interaction: "E", "Space", "Enter/Return"
+                if(key == 32){
 
+                    BurgerWindow.burgerEaten--;
+
+                }
+
+            }
+        });
         prateekFightWindow.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
