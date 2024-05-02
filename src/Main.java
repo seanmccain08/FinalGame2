@@ -122,8 +122,6 @@ public class Main {
         lukeFightWindow.setBackground(Color.black);
         lukeFightWindow.add(lukeFight);
 
-        burgerWindow.setVisible(true);
-
         frame.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {

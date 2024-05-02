@@ -239,7 +239,13 @@ public abstract class TextBox {
             }
             else if(Main.currentOpponent == "Luke"){
 
+                if(BurgerWindow.first){
 
+                    JOptionPane.showMessageDialog(null, "When you press OK, you will have to\nspam the Space Bar to eat a burger.\nIf you manage to eat more than luke,\nyou will deal damage.");
+                    BurgerWindow.first = false;
+
+                }
+                Main.burgerWindow.setVisible(true);
 
             }
         }
