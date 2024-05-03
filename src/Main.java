@@ -9,7 +9,7 @@ public class Main {
 
 
     public static boolean firstLoad = true;
-    public static String version = "Update 0.9.3";
+    public static String version = "Update 1.0";
     public static String currentOpponent = "";
     public static Player player = new Player();
     public static int games = 0;
@@ -378,7 +378,11 @@ public class Main {
                 // Keys for menu interaction: "E", "Space", "Enter/Return"
                 if(key == 32){
 
-                    BurgerWindow.burgerEaten--;
+                    if(BurgerWindow.phase == 0){
+
+                        BurgerWindow.burgerEaten--;
+
+                    }
 
                 }
 

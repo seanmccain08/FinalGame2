@@ -11,8 +11,11 @@ public class BurgerWindow extends JPanel {
     static Font bodyFont = new Font("SansSerif", Font.PLAIN, 15);
     public static int lukeBurgerEaten = (int)(Math.random()*15+1);
     public static int burgerEaten = 15;
-    int phase = 0;
-    int frame = 50;
+    boolean shield = false;
+    boolean removeShield = false;
+    public static int phase = 0;
+    int damager = 0;
+    int frame = 40;
     int posX = 225;
     int posY = 100;
     int size = 150;
@@ -41,21 +44,51 @@ public class BurgerWindow extends JPanel {
 
                 phase++;
                 frame = 45;
+                if(Main.player.getShields() > 0){
 
-                //Do the damage
+                    shield = true;
+
+                }
 
             }
             else{
 
-                burgerEaten = 15;
-                lukeBurgerEaten = (int)(Math.random()*15+1);
                 Main.burgerWindow.setVisible(false);
+                frame = 40;
+                phase = 0;
+                if(damager == 0){
+
+                    int damage = (15-burgerEaten)*2;
+                    LukeFight.lukeHP -= (damage+Main.player.getDamageBonus());
+
+                }
+                else{
+
+                    if(!shield){
+
+                        Main.player.setHP(Main.player.getHP()-lukeBurgerEaten);
+
+                    }
+
+                }
+                if(shield && removeShield){
+
+                    Main.player.setShields(Main.player.getShields()-1);
+                    shield = false;
+                    removeShield = false;
+
+                }
+                lukeBurgerEaten = (int)(Math.random()*15+1);
+                burgerEaten = 15;
 
             }
 
         }
         if(phase == 0){
 
+            g.setColor(Color.white);
+            g.setFont(mainFont);
+            g.drawString("Spam the Space Bar!", 160, 320);
             if(increase){
 
                 size+=2;
@@ -104,6 +137,40 @@ public class BurgerWindow extends JPanel {
         }
         else{
 
+            g.setColor(Color.white);
+            boldFont = new Font("SansSerif", Font.BOLD, 30);
+            g.setFont(boldFont);
+            if(burgerEaten < lukeBurgerEaten){
+
+                damager = 0;
+                g.drawString("You ate more of the burger and", 60, 145);
+                if(burgerEaten < 0){
+
+                    burgerEaten = 0;
+
+                }
+                g.drawString("hit Luke for "+(((15-burgerEaten)*2)+Main.player.getDamageBonus())+" damage!", 100, 180);
+
+
+            }
+            else{
+
+                damager = 1;
+                if(shield){
+
+                    g.drawString("Luke ate more of his burger and", 50, 145);
+                    g.drawString("also ate your shield.", 120, 180);
+                    removeShield = true;
+
+                }
+                else{
+
+                    g.drawString("Luke ate more of his burger and", 60, 145);
+                    g.drawString("hit you for "+lukeBurgerEaten+" damage!", 110, 180);
+
+                }
+
+            }
 
 
         }
