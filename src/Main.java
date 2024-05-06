@@ -9,7 +9,7 @@ public class Main {
 
 
     public static boolean firstLoad = true;
-    public static String version = "Update 1.0";
+    public static String version = "Version 1.1";
     public static String currentOpponent = "";
     public static Player player = new Player();
     public static int games = 0;

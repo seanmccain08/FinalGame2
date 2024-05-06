@@ -9,12 +9,13 @@ public class BurgerWindow extends JPanel {
     static Font mainFont = new Font("SansSerif", Font.PLAIN, 30);
     static Font boldFont = new Font("SansSerif", Font.BOLD, 30);
     static Font bodyFont = new Font("SansSerif", Font.PLAIN, 15);
-    public static int lukeBurgerEaten = (int)(Math.random()*15+1);
+    public static int lukeBurgerEaten = (int)(Math.random()*12+1);
     public static int burgerEaten = 15;
     boolean shield = false;
     boolean removeShield = false;
     public static int phase = 0;
     int damager = 0;
+    int damage1 = 0;
     int frame = 40;
     int posX = 225;
     int posY = 100;
@@ -66,7 +67,8 @@ public class BurgerWindow extends JPanel {
 
                     if(!shield){
 
-                        Main.player.setHP(Main.player.getHP()-lukeBurgerEaten);
+                        Main.player.setHP(Main.player.getHP()-damage1);
+                        damage1 = 0;
 
                     }
 
@@ -78,8 +80,33 @@ public class BurgerWindow extends JPanel {
                     removeShield = false;
 
                 }
-                lukeBurgerEaten = (int)(Math.random()*15+1);
+                lukeBurgerEaten = (int)(Math.random()*12+1);
                 burgerEaten = 15;
+                if(Main.player.getHP() <= 0){
+
+                    Main.lukeFightWindow.setVisible(false);
+                    JOptionPane.showMessageDialog(null, "You Lost! All bonuses have been removed.");
+                    Menu.logoChoice = (int)(Math.random()*6+1);
+                    Main.losses++;
+                    Main.player.setShields(0);
+                    Main.player.setDamageBonus(0);
+                    Sound.introSound();
+                    Main.frame.setVisible(true);
+
+                }
+                else if(LukeFight.lukeHP <= 0){
+
+                    LukeFight.lukeHP = 0;
+                    Main.lukeFightWindow.setVisible(false);
+                    Sound.expandSound();
+                    JOptionPane.showMessageDialog(null, "You Won! You will keep\nyour damage bonus & shields!");
+                    Sound.backSound();
+                    Sound.introSound();
+                    Main.wins++;
+                    Menu.logoChoice = (int)(Math.random()*6+1);
+                    Main.frame.setVisible(true);
+
+                }
 
             }
 
@@ -165,8 +192,14 @@ public class BurgerWindow extends JPanel {
                 }
                 else{
 
+                    damage1 = 15-lukeBurgerEaten;
+                    if(damage1 > 10){
+
+                        damage1-=5;
+
+                    }
                     g.drawString("Luke ate more of his burger and", 60, 145);
-                    g.drawString("hit you for "+lukeBurgerEaten+" damage!", 110, 180);
+                    g.drawString("hit you for "+damage1+" damage!", 110, 180);
 
                 }
 
