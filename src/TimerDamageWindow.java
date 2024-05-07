@@ -66,6 +66,7 @@ public class TimerDamageWindow extends JPanel {
                     Main.timerDamageWindow.setVisible(false);
                     Sound.expandSound();
                     JOptionPane.showMessageDialog(null, "You Won! You will keep\nyour damage bonus & shields!");
+                    Main.beatenRyan = true;
                     Sound.backSound();
                     Sound.introSound();
                     Main.wins++;

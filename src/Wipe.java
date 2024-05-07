@@ -16,6 +16,14 @@ public class Wipe {
         pw.println(0);
         pw.println(0);
         pw.println(0);
+        pw.println(-1);
+        pw.println(-1);
+        pw.println(-1);
+        pw.println(-1);
+        pw.println(0);
+        pw.println(0);
+        pw.println(0);
+        pw.println(0);
 
         pw.close();
 

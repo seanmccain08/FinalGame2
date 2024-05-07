@@ -50,6 +50,7 @@ public abstract class TextBox {
                                 Main.prateekFightWindow.setVisible(false);
                                 Sound.expandSound();
                                 JOptionPane.showMessageDialog(null, "You Won! You will keep\nyour damage bonus & shields!");
+                                Main.beatenPrateek = true;
                                 Main.wins++;
                                 Sound.backSound();
                                 Sound.introSound();
@@ -103,6 +104,7 @@ public abstract class TextBox {
                             Main.prateekFightWindow.setVisible(false);
                             Sound.expandSound();
                             JOptionPane.showMessageDialog(null, "You Won! You will keep\nyour damage bonus & shields!");
+                            Main.beatenPrateek = true;
                             Sound.backSound();
                             Sound.introSound();
                             Menu.logoChoice = (int)(Math.random()*6+1);
@@ -176,6 +178,7 @@ public abstract class TextBox {
                                 Main.jackFightWindow.setVisible(false);
                                 Sound.expandSound();
                                 JOptionPane.showMessageDialog(null, "You Won! You will keep\nyour damage bonus & shields!");
+                                Main.beatenJack = true;
                                 Sound.backSound();
                                 Sound.introSound();
                                 Main.wins++;

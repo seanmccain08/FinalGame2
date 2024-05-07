@@ -100,6 +100,7 @@ public class BurgerWindow extends JPanel {
                     Main.lukeFightWindow.setVisible(false);
                     Sound.expandSound();
                     JOptionPane.showMessageDialog(null, "You Won! You will keep\nyour damage bonus & shields!");
+                    Main.beatenLuke = true;
                     Sound.backSound();
                     Sound.introSound();
                     Main.wins++;

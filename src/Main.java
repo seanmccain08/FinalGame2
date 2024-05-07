@@ -10,6 +10,18 @@ public class Main {
 
     public static boolean firstLoad = true;
     public static String version = "Version 1.1";
+
+    //For Seaver fight (Will be saved to the file)
+    public static int codeDigit1 = (int)(Math.random()*10);
+    public static int codeDigit2 = (int)(Math.random()*10);
+    public static int codeDigit3 = (int)(Math.random()*10);
+    public static int codeDigit4 = (int)(Math.random()*10);
+
+    public static boolean beatenPrateek = false;
+    public static boolean beatenJack = false;
+    public static boolean beatenRyan = false;
+    public static boolean beatenLuke = false;
+
     public static String currentOpponent = "";
     public static Player player = new Player();
     public static int games = 0;
@@ -70,13 +82,14 @@ public class Main {
             saveDataWindow.setVisible(true);
 
         }
-        else{
+        else {
 
             Sound.selectSound();
             Sound.introSound();
             frame.setVisible(true);
 
         }
+        firstLoad = false;
         inventoryWindow.add(inventory);
         inventoryWindow.setSize(600, 400);
         inventoryWindow.setLocationRelativeTo(null);
@@ -835,7 +848,6 @@ public class Main {
                     if(firstLoad){
 
                         frame.setVisible(true);
-                        firstLoad = false;
 
                     }
 

@@ -16,6 +16,34 @@ public class Save {
         pw.println(Main.losses);
         pw.println(Main.player.getShields());
         pw.println(Main.player.getDamageBonus());
+        pw.println(Main.codeDigit1);
+        pw.println(Main.codeDigit2);
+        pw.println(Main.codeDigit3);
+        pw.println(Main.codeDigit4);
+        if(Main.beatenPrateek){
+            pw.println(1);
+        }
+        else{
+            pw.println(0);
+        }
+        if(Main.beatenJack){
+            pw.println(1);
+        }
+        else{
+            pw.println(0);
+        }
+        if(Main.beatenRyan){
+            pw.println(1);
+        }
+        else{
+            pw.println(0);
+        }
+        if(Main.beatenLuke){
+            pw.println(1);
+        }
+        else{
+            pw.println(0);
+        }
 
         pw.close();
 
