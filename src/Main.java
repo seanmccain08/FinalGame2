@@ -9,7 +9,7 @@ public class Main {
 
 
     public static boolean firstLoad = true;
-    public static String version = "Version 1.1";
+    public static String version = "Version 1.2";
 
     //For Seaver fight (Will be saved to the file)
     public static int codeDigit1 = (int)(Math.random()*10);
