@@ -78,6 +78,11 @@ public class OpponentSelect extends JPanel {
             g.drawString("Prateek", 275, 150);
             g.setFont(boldFont);
             g.drawString("HP: 150", 275, 200);
+            if(Main.beatenPrateek){
+
+                g.drawString("Code: "+Main.codeDigit1, 275, 240);
+
+            }
             g.setFont(textBoxFont);
             g.setColor(Color.white);
 
@@ -88,6 +93,11 @@ public class OpponentSelect extends JPanel {
             g.drawString("Jack", 275, 450);
             g.setFont(mainFont);
             g.drawString("HP: 200", 275, 500);
+            if(Main.beatenJack){
+
+                g.drawString("Code: "+Main.codeDigit2, 275, 540);
+
+            }
             g.setFont(textBoxFont);
 
             //Ryan - Opponent 3
@@ -97,6 +107,11 @@ public class OpponentSelect extends JPanel {
             g.drawImage(ryanImage.getImage(), 605, 105, 190, 190, null);
             g.setFont(mainFont);
             g.drawString("HP: 300", 825, 200);
+            if(Main.beatenRyan){
+
+                g.drawString("Code: "+Main.codeDigit3, 825,240);
+
+            }
             g.setFont(textBoxFont);
 
             //Luke - Opponent 4
@@ -106,6 +121,11 @@ public class OpponentSelect extends JPanel {
             g.drawString("Luke", 825, 450);
             g.setFont(mainFont);
             g.drawString("HP: 450", 825, 500);
+            if(Main.beatenLuke){
+
+                g.drawString("Code: "+Main.codeDigit3, 825,540);
+
+            }
             g.setFont(textBoxFont);
 
         }
@@ -119,9 +139,14 @@ public class OpponentSelect extends JPanel {
             g.drawString("Prateek", 275, 150);
             g.setFont(mainFont);
             g.drawString("HP: 150", 275, 200);
+            if(Main.beatenPrateek){
+
+                g.drawString("Code: "+Main.codeDigit1, 275, 240);
+
+            }
             g.setFont(textBoxFont);
 
-            //Jack - Opponent 1
+            //Jack - Opponent 2
             g.setColor(Color.yellow);
             g.fillRect(50, 400, 200, 200);
             ImageIcon jackImage = new ImageIcon("Images/jack.png");
@@ -130,6 +155,11 @@ public class OpponentSelect extends JPanel {
             g.drawString("Jack", 275, 450);
             g.setFont(boldFont);
             g.drawString("HP: 200", 275, 500);
+            if(Main.beatenJack){
+
+                g.drawString("Code: "+Main.codeDigit2, 275, 540);
+
+            }
             g.setFont(textBoxFont);
             g.setColor(Color.white);
 
@@ -140,6 +170,11 @@ public class OpponentSelect extends JPanel {
             g.drawImage(ryanImage.getImage(), 605, 105, 190, 190, null);
             g.setFont(mainFont);
             g.drawString("HP: 300", 825, 200);
+            if(Main.beatenRyan){
+
+                g.drawString("Code: "+Main.codeDigit3, 825,240);
+
+            }
             g.setFont(textBoxFont);
 
             //Luke - Opponent 4
@@ -149,6 +184,11 @@ public class OpponentSelect extends JPanel {
             g.drawString("Luke", 825, 450);
             g.setFont(mainFont);
             g.drawString("HP: 450", 825, 500);
+            if(Main.beatenLuke){
+
+                g.drawString("Code: "+Main.codeDigit3, 825,540);
+
+            }
             g.setFont(textBoxFont);
 
         }
@@ -161,6 +201,11 @@ public class OpponentSelect extends JPanel {
             g.drawString("Prateek", 275, 150);
             g.setFont(mainFont);
             g.drawString("HP: 150", 275, 200);
+            if(Main.beatenPrateek){
+
+                g.drawString("Code: "+Main.codeDigit1, 275, 240);
+
+            }
             g.setFont(textBoxFont);
 
             //Jack - Opponent 2
@@ -170,6 +215,11 @@ public class OpponentSelect extends JPanel {
             g.drawString("Jack", 275, 450);
             g.setFont(mainFont);
             g.drawString("HP: 200", 275, 500);
+            if(Main.beatenJack){
+
+                g.drawString("Code: "+Main.codeDigit2, 275, 540);
+
+            }
             g.setFont(textBoxFont);
 
             //Ryan - Opponent 3
@@ -181,6 +231,11 @@ public class OpponentSelect extends JPanel {
             g.drawString("Ryan", 825, 150);
             g.setFont(boldFont);
             g.drawString("HP: 300", 825, 200);
+            if(Main.beatenRyan){
+
+                g.drawString("Code: "+Main.codeDigit3, 825,240);
+
+            }
             g.setFont(textBoxFont);
             g.setColor(Color.white);
 
@@ -191,6 +246,11 @@ public class OpponentSelect extends JPanel {
             g.drawString("Luke", 825, 450);
             g.setFont(mainFont);
             g.drawString("HP: 450", 825, 500);
+            if(Main.beatenLuke){
+
+                g.drawString("Code: "+Main.codeDigit3, 825,540);
+
+            }
             g.setFont(textBoxFont);
 
         }
@@ -203,6 +263,11 @@ public class OpponentSelect extends JPanel {
             g.drawString("Prateek", 275, 150);
             g.setFont(mainFont);
             g.drawString("HP: 150", 275, 200);
+            if(Main.beatenPrateek){
+
+                g.drawString("Code: "+Main.codeDigit1, 275, 240);
+
+            }
             g.setFont(textBoxFont);
 
             //Jack - Opponent 2
@@ -212,6 +277,11 @@ public class OpponentSelect extends JPanel {
             g.drawString("Jack", 275, 450);
             g.setFont(mainFont);
             g.drawString("HP: 200", 275, 500);
+            if(Main.beatenJack){
+
+                g.drawString("Code: "+Main.codeDigit2, 275, 540);
+
+            }
             g.setFont(textBoxFont);
 
             //Ryan - Opponent 3
@@ -221,6 +291,11 @@ public class OpponentSelect extends JPanel {
             g.drawImage(ryanImage.getImage(), 605, 105, 190, 190, null);
             g.setFont(mainFont);
             g.drawString("HP: 300", 825, 200);
+            if(Main.beatenRyan){
+
+                g.drawString("Code: "+Main.codeDigit3, 825,240);
+
+            }
             g.setFont(textBoxFont);
 
             //Luke - Opponent 4
@@ -232,6 +307,11 @@ public class OpponentSelect extends JPanel {
             g.drawString("Luke", 825, 450);
             g.setFont(boldFont);
             g.drawString("HP: 450", 825, 500);
+            if(Main.beatenLuke){
+
+                g.drawString("Code: "+Main.codeDigit3, 825,540);
+
+            }
             g.setFont(textBoxFont);
             g.setColor(Color.white);
 

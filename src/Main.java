@@ -651,6 +651,11 @@ public class Main {
                 int key = e.getKeyCode();
                 //System.out.println(key);
                 // Keys for menu interaction: "E", "Space", "Enter/Return"
+                if(key == 27){
+
+                    settingsWindow.setVisible(false);
+
+                }
                 if(key == 32 || key == 10 || key == 69){
 
                     if(settingsSelected == 0){
@@ -671,6 +676,7 @@ public class Main {
                         if(x == 0){
 
                             SaveDataWindow.saveDataMode = 2;
+                            settingsWindow.setVisible(false);
                             saveDataWindow.setVisible(true);
 
                         }

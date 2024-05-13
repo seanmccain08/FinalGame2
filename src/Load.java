@@ -23,20 +23,32 @@ public class Load {
         x = scan.nextLine();
         Main.player.setDamageBonus(Integer.parseInt(x));
         x = scan.nextLine();
-        if(x != "-1"){
-            Main.codeDigit1 = Integer.parseInt(scan.nextLine());
+        if(!x.equals("-1")){
+            Main.codeDigit1 = Integer.parseInt(x);
+        }
+        else{
+            Main.codeDigit1 = (int)(Math.random()*10);
         }
         x = scan.nextLine();
-        if(x != "-1"){
-            Main.codeDigit2 = Integer.parseInt(scan.nextLine());
+        if(!x.equals("-1")){
+            Main.codeDigit2 = Integer.parseInt(x);
+        }
+        else{
+            Main.codeDigit2 = (int)(Math.random()*10);
         }
         x = scan.nextLine();
-        if(x != "-1"){
-            Main.codeDigit3 = Integer.parseInt(scan.nextLine());
+        if(!x.equals("-1")){
+            Main.codeDigit3 = Integer.parseInt(x);
+        }
+        else{
+            Main.codeDigit3 = (int)(Math.random()*10);
         }
         x = scan.nextLine();
-        if(x != "-1"){
-            Main.codeDigit4 = Integer.parseInt(scan.nextLine());
+        if(!x.equals("-1")){
+            Main.codeDigit4 = Integer.parseInt(x);
+        }
+        else{
+            Main.codeDigit4 = (int)(Math.random()*10);
         }
         x = scan.nextLine();
         if(x.equals("1")){
