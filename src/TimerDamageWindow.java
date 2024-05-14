@@ -86,6 +86,7 @@ public class TimerDamageWindow extends JPanel {
                 }
                 if (Main.player.getHP() < 1) {
 
+                    Sound.backSound();
                     Main.ryanFightWindow.setVisible(false);
                     Main.timerDamageWindow.setVisible(false);
                     JOptionPane.showMessageDialog(null, "You Lost! All bonuses have been removed.");
@@ -114,6 +115,7 @@ public class TimerDamageWindow extends JPanel {
                 shield = false;
 
                 Main.timerDamageWindow.setVisible(false);
+                Sound.backSound();
 
             }
 

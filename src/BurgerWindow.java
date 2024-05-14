@@ -53,8 +53,8 @@ public class BurgerWindow extends JPanel {
 
             }
             else{
-
                 Main.burgerWindow.setVisible(false);
+                Sound.backSound();
                 frame = 40;
                 phase = 0;
                 if(damager == 0){
@@ -84,8 +84,10 @@ public class BurgerWindow extends JPanel {
                 burgerEaten = 15;
                 if(Main.player.getHP() <= 0){
 
+                    Sound.backSound();
                     Main.lukeFightWindow.setVisible(false);
                     JOptionPane.showMessageDialog(null, "You Lost! All bonuses have been removed.");
+                    Sound.selectSound();
                     Menu.logoChoice = (int)(Math.random()*6+1);
                     Main.losses++;
                     Main.player.setShields(0);

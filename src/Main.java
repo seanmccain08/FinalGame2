@@ -9,7 +9,7 @@ public class Main {
 
 
     public static boolean firstLoad = true;
-    public static String version = "Version 1.2";
+    public static String version = "Version 1.3";
 
     //For Seaver fight (Will be saved to the file)
     public static int codeDigit1 = (int)(Math.random()*10);
@@ -87,9 +87,9 @@ public class Main {
             Sound.selectSound();
             Sound.introSound();
             frame.setVisible(true);
+            firstLoad = false;
 
         }
-        firstLoad = false;
         inventoryWindow.add(inventory);
         inventoryWindow.setSize(600, 400);
         inventoryWindow.setLocationRelativeTo(null);
@@ -366,6 +366,7 @@ public class Main {
                 // Keys for menu interaction: "E", "Space", "Enter/Return"
                 if(key == 32){
 
+                    Sound.multiplierSound();
                     if(TimerDamageWindow.phase == 0){
 
                         TimerDamageWindow.score++;
@@ -393,6 +394,7 @@ public class Main {
 
                     if(BurgerWindow.phase == 0){
 
+                        Sound.biteSound();
                         BurgerWindow.burgerEaten--;
 
                     }
@@ -854,6 +856,7 @@ public class Main {
                     if(firstLoad){
 
                         frame.setVisible(true);
+                        firstLoad = false;
 
                     }
 

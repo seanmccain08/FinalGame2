@@ -64,6 +64,18 @@ public class Sound {
         playSound(filepath);
 
     }
+    public static void biteSound(){
+
+        String filepath = "Sounds/bite.wav";
+        playSound(filepath);
+
+    }
+    public static void multiplierSound(){
+
+        String filepath = "Sounds/multiplier.wav";
+        playSound(filepath);
+
+    }
     public static void reasonSound(){
 
         String filepath = "";

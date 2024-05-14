@@ -231,10 +231,13 @@ public abstract class TextBox {
             }
             else if(Main.currentOpponent == "Ryan"){
 
+                Sound.altSelectSound();
+                Sound.expandSound();
                 if(TimerDamageWindow.first){
 
                     JOptionPane.showMessageDialog(null, "When you press OK, you will have to\nspam the Space Bar to increase the\namount of damage you deal\n(given a small amount of time).\nThen you will spam for the multiplier\nwhich starts at 0.\n\nThis message will only show once");
                     TimerDamageWindow.first = false;
+                    Sound.altSelectSound();
 
                 }
                 Main.timerDamageWindow.setVisible(true);
@@ -242,10 +245,13 @@ public abstract class TextBox {
             }
             else if(Main.currentOpponent == "Luke"){
 
+                Sound.altSelectSound();
+                Sound.expandSound();
                 if(BurgerWindow.first){
 
                     JOptionPane.showMessageDialog(null, "When you press OK, you will have to\nspam the Space Bar to eat a burger.\nIf you manage to eat more than luke,\nyou will deal damage.");
                     BurgerWindow.first = false;
+                    Sound.altSelectSound();
 
                 }
                 Main.burgerWindow.setVisible(true);
