@@ -13,7 +13,7 @@ public class RyanFight extends JPanel {
     static Font mainFont = new Font("SansSerif", Font.PLAIN, 25);
     static Font playerHPFont = new Font("SansSerif", Font.BOLD, 10);
     static Font numShieldFont = new Font("SansSerif", Font.PLAIN, 40);
-    String[] phrases = {"Alriiiiiiiight", "Bad Aim", "Bro what are you doing"};
+    String[] phrases = {"yurr", "i luv music", "reel'em in!"};
     static double ryanHP;
     public RyanFight(){
 

@@ -13,7 +13,7 @@ public class PrateekFight extends JPanel {
     static Font mainFont = new Font("SansSerif", Font.PLAIN, 25);
     static Font playerHPFont = new Font("SansSerif", Font.BOLD, 10);
     static Font numShieldFont = new Font("SansSerif", Font.PLAIN, 40);
-    String[] phrases = {"Ok buddy", "You're an idiot", "Alright bro"};
+    String[] phrases = {"Ok buddy", "Guys...", "Alright bro"};
     static int prateekHP;
     public PrateekFight(){
 

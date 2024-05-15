@@ -13,7 +13,7 @@ public class LukeFight extends JPanel {
     static Font mainFont = new Font("SansSerif", Font.PLAIN, 25);
     static Font playerHPFont = new Font("SansSerif", Font.BOLD, 10);
     static Font numShieldFont = new Font("SansSerif", Font.PLAIN, 40);
-    String[] phrases = {"Put the phone down","What the sigma?","Shut up man"};
+    String[] phrases = {"Put the phone down","What the sigma?","*Flexes*"};
     static int lukeHP;
     public LukeFight(){
 

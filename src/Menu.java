@@ -32,7 +32,6 @@ public class Menu extends JPanel {
 
             g.setFont(defaultFont);
             g.setColor(Color.white);
-            g.drawString(Main.version, 0, 685);
             g.setColor(Color.WHITE);
             g.setFont(titleFont);
             ImageIcon logo = new ImageIcon();
